@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+
+
 .main {
        
-        height: 100vh; /* This will make it cover the full viewport height */
-        color: #f2ede4;
+        height: 220vh;
+        background-color: #f2ede4;
+        font-family: "Wix Madefor Text", sans-serif;
     }
 
 .article1 {
@@ -10,21 +14,33 @@
 .travel-layout {
     background: url('https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg') no-repeat center center;
     background-size: cover;
-    height: 70vh;
-    width: 80vw; /* This will make it cover the full viewport height */
+    height: 65vh;
+    width: 80vw; 
     color: #fff;
-    margin-top: 70px;
-    padding-top: 50px;
+    margin-top: 80px;
     border-radius: 20px;
   }
-  
+
   .header-section {
-    padding-top: 100px; /* Adjust as per your layout */
+    background-color: rgba(41, 54, 43, 0.9);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px; /* The last value (0.5) is the opacity level */
   }
   
   .btn-orange {
-    background-color: #ff8c00; /* Or the exact orange color from your design */
+    background-color: #f37523; /* Or the exact orange color from your design */
     color: #fff;
+    border-radius: 30px;
+    width: 100px;
+    margin: 5px;
+    font-weight: bold;
+    
+  }
+  
+  .btn-orange:hover {
+    background-color: #f2ede4; /* Or the exact orange color from your design */
+    color: #f37523;
+    font-weight: bold;
   }
   
   .btn-green {
@@ -32,7 +48,36 @@
     color: #fff;
   }
   
-  .form-row {
-    margin-top: 50px; /* Adjust spacing as needed */
+  .bar-search {
+    background-color: #f2ede4;
+    padding-top: 50px;
+    margin: 50px;
+  }
+  .search-bar{
+    background-color: #dfd9ce;
+    height: 12vh;
+    width: auto;
+  }
+  .search-bar .input-group-text {
+    font-weight: bold;
+    color: #333;
+    background-color: #f2ede4;
+  }
+ 
+  
+  .search-bar .form-control:focus {
+    box-shadow: none;
+  }
+  
+  .search-bar .vr {
+    background-color: #f37523;
+    width: 12px;
+    height: auto;
+  }
+  
+
+  .search-bar .btn-success {
+    background-color: #000000;
+    border: none;
   }
   

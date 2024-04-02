@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+
+
+
+.loginpage {
+    background-image: url('https://media.cntraveler.com/photos/65eb8ecb3d22512f1770825b/16:9/w_2240,c_limit/Nieuw_Amsterdam_Skagway-0204_CC_Drone.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tagline {
+    font-family:  "Wix Madefor Text", sans-serif;
+    font-weight: 800;
+    font-size: 35px;
+    color: #ffffff;
+    text-align: left;
+    align-items: center;
+    padding-left: 1px;
+    padding-top: 330px;
+}
+.title {
+    font-family: "Potta One", system-ui;
+    font-weight: 600;
+    font-size: 25px;
+    color: #f37523;
+    text-align: left;
+    margin-top: 10px;
+}
+
+
+.title span {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: black;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    padding-left: 50px;
+    padding-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-box {
+    width: 500px;
+    height: 420px;
+    padding: 30px;
+    margin-top: 50px;
+    border-radius: 15px;
+    background-color: rgba(242, 237, 228, 0.9);
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
+    
+
+}
+
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 16px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    background: rgba(41, 54, 43, 0.9);; 
+}
+
+.login-box button:hover {
+    background-color: #686f77;
+}
+
+.register {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.register a {
+    color: #f37523;
+    text-decoration: none;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+h3  {
+    font-size: 15px;
+    color: #09D8E2;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+h4 {
+    font-size: 15px;
+    color: rgb(133, 43, 43) !important;
+    margin-bottom: 20px;
+}
