@@ -1,0 +1,38 @@
+.main {
+       
+        height: 100vh; /* This will make it cover the full viewport height */
+        color: #f2ede4;
+    }
+
+.article1 {
+    padding-top: 20px;
+}
+.travel-layout {
+    background: url('https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg') no-repeat center center;
+    background-size: cover;
+    height: 70vh;
+    width: 80vw; /* This will make it cover the full viewport height */
+    color: #fff;
+    margin-top: 70px;
+    padding-top: 50px;
+    border-radius: 20px;
+  }
+  
+  .header-section {
+    padding-top: 100px; /* Adjust as per your layout */
+  }
+  
+  .btn-orange {
+    background-color: #ff8c00; /* Or the exact orange color from your design */
+    color: #fff;
+  }
+  
+  .btn-green {
+    background-color: #4caf50; /* Or the exact green color from your design */
+    color: #fff;
+  }
+  
+  .form-row {
+    margin-top: 50px; /* Adjust spacing as needed */
+  }
+  
