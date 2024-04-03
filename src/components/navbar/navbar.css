@@ -4,89 +4,33 @@ body {
     font-family: "Wix Madefor Text", sans-serif
 
 }
-
-.nav {
-    font-size: 15px;
-    color: black;
-    font-weight:bolder;
-    height: 30px;
-    width: 80px;
+.navbar{
+    background-color: rgb(242, 237, 228,0.9);
+    font-weight: 800;
     font-family: "Wix Madefor Text", sans-serif;
-    font-optical-sizing: auto;
 }
 
-
-.nav:hover {
-    
+.nav-link.hover {
     color: #f37523;
 }
 
 .nav-style {
-    font-size: 10px;
-    color: #f37523;
-    font-weight: bold;
     height: 35px;
-    width: 140px;
+    width: 200px;
 }
-
-.navbar {
-    font-weight: bold;
+.btn{
+    font-size: 12px;
+    background-color: #f37523;
+    color: white;
+    font-weight:bolder;
+    height: 30px;
+    width: 150px;
+    font-family: "Wix Madefor Text", sans-serif;
+    font-optical-sizing: auto;
 }
-.telephone {
-    font-size: x-small;
-    color: #ffffff;
-}
-
-.hover-button {
-    background-color: #f37523; 
-}
-
-.hover-button:hover {
-    background-color: black;}
-
-#footer{
-    background: #212121;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-#open {
-    font-weight: bolder;
-}
-
-#followus {
-    color: #ADADAD;
-    font-weight: lighter;
-}
-
-.logo {
-    color: #ADADAD;
-    font-size: 18px;
-}
-
-.copyright {
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: lighter;
-}
-
-.card-img-top {
-    height:400px;
-    object-fit: cover;
-}
-a {
-    text-decoration: none;
+.nav-link-active {
+    color: #f37523 !important; /* Change the color to orange for the active link */
   }
-
-.modal-body{
-text-align: center;
-color: #212121;
-}
-
-.breadcrumb a{
-    color: #4e4c4c;
-    text-decoration: none;
- }
 
  @keyframes spin {
     from {
@@ -99,5 +43,35 @@ color: #212121;
 
 .spinning {
     animation: spin 1s infinite linear;
+}
+
+
+
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+    }
+    .navbar-brand, .nav-link {
+        font-size: 20px; /* Make the font smaller */
+    }
+
+    .nav {
+        font-size: 12px; /* Adjust nav font size for mobile */
+    }
+
+    .nav-style {
+        font-size: 12px; /* Adjust button font size for mobile */
+        padding: .375rem .75rem; /* Bootstrap default padding for buttons */
+    }
+
+    .navbar-toggler {
+        font-size: 14px; /* Adjust the toggler icon size if needed */
+    }
+}
+
+/* You might also want to adjust the height of the navbar itself for mobile */
+.navbar {
+    height: auto; 
+    /* Auto height to accommodate the toggler and brand */
 }
 

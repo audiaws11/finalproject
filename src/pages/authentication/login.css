@@ -45,8 +45,9 @@ h2 {
     justify-content: center;
     align-items: center;
     height: 90vh;
-    padding-left: 50px;
+    padding-left: 30px;
     padding-right: 10px;
+    align-content: end;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -118,4 +119,52 @@ h4 {
     font-size: 15px;
     color: rgb(133, 43, 43) !important;
     margin-bottom: 20px;
+}
+
+.notif {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 2px;
+    color: rgb(80, 115, 86)!important;
+    
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .login-container {
+        height: auto; 
+        margin-top: 60px; 
+    }
+
+    .login-box {
+        width: 100%;
+        height: max-content; 
+        margin-top: 100px;
+    }
+
+    
+
+    .tagline {
+        padding-top: 20px; 
+        padding-left: 10px;
+        font-size: 20px;
+        text-align: center; 
+    }
+
+    .title {
+        font-size: 20px;
+        text-align: center; 
+        margin-top: 5px;
+    }
+
+    .loginpage {
+        height: auto; 
+        min-height: 100vh; 
+        padding-bottom: 20px;
+        width: 104vw;
+    }
+
+   
 }

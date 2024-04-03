@@ -7,7 +7,7 @@ import Layout from "../../components/layout/Layout";
 
 const Login = () => {
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [notif, setNotif] = useState("");
@@ -15,36 +15,40 @@ const Login = () => {
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
     
-    const handleUsernameChange = (event) => {
-      setUsername(event.target.value);
+    const handleEmailChange = (event) => {
+      setEmail(event.target.value);
     };
   
     const handlePasswordChange = (event) => {
       setPassword(event.target.value);
     };
-    console.log(username, password);
+    console.log(email, password);
     const handleSubmit = (event) => {
       event.preventDefault();
       const payload = {
-        username: username,
+        email : email,
         password: password,
       };
       setLoading(true);
 
       axios
-        .post('https://reqres.in/api/login', payload)
+        .post('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/login', payload, {
+          headers: {
+            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c' //
+          }
+        })
         .then((response) => {
           setNotif ("Login Success");
           const token = response.data.token;
           localStorage.setItem("token", token);
-          console.log(response);
+          console.log("response", response);
           setTimeout(() => {
-            navigate("/listuser");
-          }, 3000);
+            navigate("/");
+          }, 2000);
         })
         .catch((error) => {
           console.log(error.response);
-          setNotifError(error.response.data.error);
+          setNotifError(error.response.data.message);
           setShowModal(true);
         })
         .finally(() => {
@@ -53,10 +57,10 @@ const Login = () => {
     };
   
     return (
+      <Layout>    
+      <div className="loginpage row ">
         
-    <div className="loginpage row">
-        <Layout>
-        <div className="login-container col-6">
+        <div className="login-container col-md-6">
             <div className="login-box">
             <h1 className="title">
                         <i className="bi bi-globe-asia-australia" style={{ color: '#f37523', fontSize: '22px' }}></i>
@@ -67,8 +71,8 @@ const Login = () => {
               <input 
               type="text" 
               placeholder="your@email.com"
-              value={username}
-              onChange={handleUsernameChange} /><br/>
+              value={email}
+              onChange={handleEmailChange} /><br/>
               <label className="form-label">Password:</label>
               <input 
               type="password" 
@@ -78,21 +82,22 @@ const Login = () => {
               <p className="register">Dont have account? <Link to="/register">Register</Link></p>
               <button disabled={loading?true:false} onClick={handleSubmit}>
               {loading ? "Loading..." : "Continue with this email"}</button>
-              {!!notif.length && <h3>{notif}</h3>}
+              {!!notif.length && <p className='notif'>{notif}</p>}
                 <Modal show={showModal} onHide={() => setShowModal(false)}>
                       <Modal.Header closeButton>
-                      <Modal.Title>{notif}</Modal.Title></Modal.Header>
+                      <Modal.Title>error</Modal.Title></Modal.Header>
                       <Modal.Body><h4>{notifError}</h4></Modal.Body>
                 </Modal>
             </div>     
         </div>
-        <div className="col-6">
+        <div className="col-md-6">
         <h3 className="tagline" >From Cozy Corners to Grand Horizons,<br/>Embrace Your Adventure.</h3> 
         </div>
        
 
-        </Layout>
+        
     </div>
+    </Layout>
     
    
     );

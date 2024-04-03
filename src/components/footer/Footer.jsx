@@ -8,7 +8,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 function Footer() {
 
     return (
-        <footer id="footer" className="min-vh-1000 p-5">
+        <footer id="footer" className="p-5">
             <div className="container">
                 <div className="row align-items-start">
         

@@ -1,83 +1,150 @@
 @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
 
-
 .main {
-       
-        height: 220vh;
-        background-color: #f2ede4;
-        font-family: "Wix Madefor Text", sans-serif;
-    }
+    height: 220vh max-content;
+    width: 100% max-content;
+    background-color: #f2ede4;
+    font-family: "Wix Madefor Text", sans-serif;
+    padding-bottom: 20px;
+}
 
 .article1 {
     padding-top: 20px;
 }
+
 .travel-layout {
     background: url('https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg') no-repeat center center;
     background-size: cover;
-    height: 65vh;
-    width: 80vw; 
+    height: 65vh max-content;
+    width: 80%;
     color: #fff;
     margin-top: 80px;
     border-radius: 20px;
-  }
+}
 
-  .header-section {
+.header-section {
     background-color: rgba(41, 54, 43, 0.9);
     border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px; /* The last value (0.5) is the opacity level */
-  }
-  
-  .btn-orange {
-    background-color: #f37523; /* Or the exact orange color from your design */
+    border-bottom-left-radius: 20px;
+}
+
+.btn-orange {
+    background-color: #f37523;
     color: #fff;
     border-radius: 30px;
-    width: 100px;
+    width: 250px;
+    height: 40px;
     margin: 5px;
     font-weight: bold;
-    
-  }
-  
-  .btn-orange:hover {
-    background-color: #f2ede4; /* Or the exact orange color from your design */
+}
+
+.btn-orange:hover {
+    background-color: #f2ede4;
     color: #f37523;
     font-weight: bold;
-  }
-  
-  .btn-green {
-    background-color: #4caf50; /* Or the exact green color from your design */
+}
+
+.btn-green {
+    background-color: #4caf50;
     color: #fff;
-  }
-  
-  .bar-search {
-    background-color: #f2ede4;
+}
+
+.bar-search {
     padding-top: 50px;
     margin: 50px;
-  }
-  .search-bar{
+}
+
+.search-bar {
     background-color: #dfd9ce;
-    height: 12vh;
+    height: 12vh max-content;
     width: auto;
-  }
-  .search-bar .input-group-text {
+}
+
+.search-bar .input-group-text {
     font-weight: bold;
     color: #333;
     background-color: #f2ede4;
-  }
- 
-  
-  .search-bar .form-control:focus {
+}
+
+.search-bar .form-control:focus {
     box-shadow: none;
-  }
-  
-  .search-bar .vr {
+}
+
+.search-bar .vr {
     background-color: #f37523;
     width: 12px;
     height: auto;
-  }
-  
+}
 
-  .search-bar .btn-success {
+.search-bar .btn-success {
     background-color: #000000;
     border: none;
-  }
-  
+}
+
+.header-section h1 {
+  font-size: 60px;
+  font-weight: bold;  
+  margin-top: 100px; 
+  margin-left: 40px; 
+}
+
+.header-section p,
+.header-section button {
+    margin-left: 40px;
+    font-size: 15px; 
+    width: auto;
+}
+
+.category {
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 12px;
+  margin-right: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .travel-layout {
+        margin-top: 100px; 
+        width: 100%;
+    }
+
+    .header-section h1 {
+      font-size: 25px;
+      font-weight: bold; 
+      margin-top: 150px;
+      margin-left: 2px; 
+    }
+
+    .header-section p,
+    .header-section button {
+        margin-left: 2px;
+        font-size: 15px; 
+        width: auto;
+    }
+
+    .bar-search {
+        margin: 20px; 
+    }
+
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch; 
+    }
+
+    .search-bar .vr {
+        display: none; 
+    }
+
+    .search-bar .input-group {
+        margin-bottom: 10px; 
+    }
+    .box-card {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 12px;
+        margin-right: 10px;
+    }
+
+}

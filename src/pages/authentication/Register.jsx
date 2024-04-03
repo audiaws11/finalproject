@@ -58,13 +58,11 @@ const RegistrationForm = () => {
     return (
         <Layout>
         <div className="registerpage">
-           
-                <div className="container">
+                <div className="box-container container">
                     <div className="row align-items-center">
                        <div className="d-flex" style={{ paddingTop: '150px'}}>
                        <div className="leftColumn col-md-6">
-                            <h1 className="leftHeader" data-aos="zoom-in">ourverse</h1>
-                            <p className="leftParagraph">Enjoy every moment with artists on global fandom life platform Ourverse</p>
+                            <p className="leftParagraph">Get on Board, Your New Adventure Awaits.</p>
                             <div className="social-login mt-3">
                                 <p>Already have an account?</p>
                                 <Link to="/login">

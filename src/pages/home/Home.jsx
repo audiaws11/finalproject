@@ -16,30 +16,31 @@ const Home = () => {
             {/* Header */}
             <div className="container-fluid main">
                 <div className="container-fluid article1">
-                    <Carousel interval={1000} wrap={true}>
+                    <Carousel interval={3000} wrap={true} >
                         <Carousel.Item>
                             <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>
                                     <div className="col-6 text-left header-section">
-                                        <h1 style={{ marginLeft: '50px', marginTop: '100px', marginRight: '50px', fontWeight: 'bolder', fontSize: '50px' }}>
+                                        <h1 >
                                             Explore<br />
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
                                         </h1>
-                                        <p style={{ marginLeft: '50px' }}>Discover possibilities of travelling!</p>
-                                        <button className="btn btn-orange" style={{ marginLeft: '50px' }}>Explore</button>
+                                        <p >Discover possibilities of travelling!</p>
+                                        <button className="btn btn-orange" >Explore</button>
                                     </div>
                                 </div>
                             </div>
-                        </Carousel.Item><Carousel.Item>
+                        </Carousel.Item>
+                        <Carousel.Item>
                             <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapercave.com/wp/wp3103579.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>
                                     <div className="col-6 text-left header-section">
-                                        <h1 style={{ marginLeft: '50px', marginTop: '100px', marginRight: '50px', fontWeight: 'bolder', fontSize: '50px' }}>
+                                        <h1 >
                                             Explore<br />
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
                                         </h1>
-                                        <p style={{ marginLeft: '50px' }}>Discover possibilities of travelling!</p>
-                                        <button className="btn btn-orange" style={{ marginLeft: '50px' }}>Explore</button>
+                                        <p >Discover possibilities of travelling!</p>
+                                        <button className="btn btn-orange" >Explore</button>
                                     </div>
                                 </div>
                             </div>
@@ -48,12 +49,12 @@ const Home = () => {
                             <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapercave.com/wp/wp9247775.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>
                                     <div className="col-6 text-left header-section">
-                                        <h1 style={{ marginLeft: '50px', marginTop: '100px', marginRight: '50px', fontWeight: 'bolder', fontSize: '50px' }}>
+                                        <h1>
                                             Explore<br />
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
                                         </h1>
-                                        <p style={{ marginLeft: '50px' }}>Discover possibilities of travelling!</p>
-                                        <button className="btn btn-orange" style={{ marginLeft: '50px' }}>Explore</button>
+                                        <p>Discover possibilities of travelling!</p>
+                                        <button className="btn btn-orange">Explore</button>
                                     </div>
                                 </div>
                             </div>
@@ -94,9 +95,9 @@ const Home = () => {
 
             {/* Category */}
             <h2 className="text-center my-4" style={{ fontWeight: 'bolder', paddingTop: '90px', paddingBottom: '50px', fontSize: '30px' }}> Travel categories</h2>
-            <div className="category d-flex justify-content-center my-4" style={{ backgroundColor: '#f2ede4' }}>
+            <div className="category d-flex justify-content-center `" style={{ backgroundColor: '#f2ede4' }}>
                 <div className="row" style={{ maxWidth: '1500px' }}>
-                    <div className="col-4">
+                    <div className="box-card col-md-4">
                         <div className="card" style={{ width: '18rem' }}>
                             <img src="https://wallpapercave.com/wp/wp3103579.jpg" className="card-img-top" alt="..." />
                             <div className="card-body">
@@ -105,7 +106,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="box-card col-md-4">
                         <div className="card" style={{ width: '18rem' }}>
                             <img src="https://wallpapercave.com/wp/wp3103579.jpg" className="card-img-top" alt="..." />
                             <div className="card-body">
@@ -114,7 +115,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-4">
+                    <div className="box-card col-md-4">
                         <div className="card" style={{ width: '18rem' }}>
                             <img src="https://wallpapercave.com/wp/wp3103579.jpg" className="card-img-top" alt="..." />
                             <div className="card-body">
