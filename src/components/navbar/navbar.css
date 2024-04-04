@@ -7,6 +7,9 @@ body {
 .navbar{
     background-color: rgb(242, 237, 228,0.9);
     font-weight: 800;
+    font-size: 15px;
+    height: 60px;
+    width: 100%;
     font-family: "Wix Madefor Text", sans-serif;
 }
 

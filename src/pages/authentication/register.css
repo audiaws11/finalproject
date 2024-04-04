@@ -4,14 +4,14 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('https://getwallpapers.com/wallpaper/full/d/3/6/1457021-cool-tropical-desktop-wallpaper-1920x1080-for-phones.jpg');
-  height: 85vh;
+  background-image: url('https://filmandforestphoto.com/wp-content/uploads/2018/09/banff-helicopter-elopement-photographers-image19.jpg');
+  height: 90vh;
 }
 .box-container {
     display: flex;
     justify-content: center;
-    height: 70vh;
-    width: 90vh;
+    height: 65vh max-content;
+    width: 100vh;
   }
   
   .box {
@@ -27,7 +27,7 @@
   .formLabel {
     margin-bottom: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
   }
   
   .formControl {
@@ -65,17 +65,18 @@
     color: white;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    height: 50vh;
-    padding: 50px;
+    height: 60vh;
+    padding: 30px;
   }
   
   .rightColumn {
     background-color: rgba(242, 237, 228, 0.9);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    height: 50vh;
-    padding-top: 70px;
+    height: 60vh;
+    padding-top: 35px;
     padding-left: 20px;
+    
   }
   
 
@@ -95,7 +96,7 @@
     font-size: 20px;
     font-weight: 600;
     line-height: 1.5;
-    padding-top: 50px;
+    padding-top: 80px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
   .social-login{
@@ -107,7 +108,7 @@
   
  
   .social-login .btn {
-    margin-right: 10px;
+    margin-right: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight:bold;
     font-size: 13px;
@@ -121,9 +122,21 @@
   
   
   .form-control {
-    border-radius: 10px; 
+    border-radius: 8px; 
     border: 1px solid #ced4da; 
     width: 92%;
+    height: 28px;
+    font-size: 20px;
+    
+  }
+
+  .form-control1 {
+    border-radius: 8px; 
+    border: 1px solid #ced4da; 
+    width: 82%;
+    height: 28px;
+    font-size: 10px;
+    padding-left: 10px;
     
   }
   
@@ -139,6 +152,7 @@
     width: 85px;
     height: 33px;
     text-align: center;
+    margin-top: 10px;
   }
   
   
@@ -171,16 +185,94 @@
   
   .form-label{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .form-check-label{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 13px;
   }
+  .notif {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 2px;
+    color: rgb(80, 115, 86)!important;
+    
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  .registerpage {
+    height: auto; 
+    padding-bottom: 80px; 
+  }
+  .box-container {
+    flex-direction: column;
+    height: auto;
+    width: 60%;
+  }
+  .leftColumn{
+    height: auto; 
+    border-radius: 0;
+    padding: 20px; 
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 45%;
+  }
+  .rightColumn {
+    height: auto; 
+    border-radius: 0; 
+    padding: 20px; 
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+   
+    
+  }
+  .form-label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 9px;
+  }
+  .form-control {
+    border-radius: 5px; 
+    border: 1px solid #ced4da; 
+    width: 92%;
+    height: 20px;
+    font-size: 10px;
+    
+  }
+
+  .form-control1 {
+    border-radius: 8px; 
+    border: 1px solid #ced4da; 
+    width: 82%;
+    height: 28px;
+    font-size: 10px;
+    padding-left: 7px;
+    
+  }
+  .leftParagraph {
+    padding-top: 70px; 
+    font-size: 16px; 
+  }
+  .social-login {
+    text-align: left; 
+  }
+  .btn1, .btn3 {
+    width: 100%; 
+  }
+  .box {
+    padding: 20px; 
+  }
+  .leftHeader {
+    font-size: 30px; 
+  }
+}
+
+
+@media (max-width: 320px) {
   .registerpage {
     height: auto; 
     padding-bottom: 20px; 
@@ -196,6 +288,7 @@
     padding: 20px; 
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    width: 66%;
   }
   .rightColumn {
     height: auto; 
@@ -203,6 +296,29 @@
     padding: 20px; 
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    
+   
+    
+  }
+  .form-label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 9px;
+  }
+  .form-control {
+    border-radius: 5px; 
+    border: 1px solid #ced4da; 
+    width: 92%;
+    height: 20px;
+    font-size: 10px;
+    
+  }
+
+  .form-control1 {
+    border-radius: 8px; 
+    border: 1px solid #ced4da; 
+    width: 82%;
+    height: 28px;
+    font-size: 10px;
     
   }
   .leftParagraph {

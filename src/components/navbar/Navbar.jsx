@@ -17,7 +17,7 @@ function AppNavbar() {
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>
-                        <i className="bi bi-globe-asia-australia" style={{ color: '#f37523', fontSize: '18px' }}></i>
+                        <img src="/image2vector.svg" alt="logo" className="logo" style={{ width: '35px', height: '35px' }} />
                          Kaja
                     </Navbar.Brand>
                 </LinkContainer>

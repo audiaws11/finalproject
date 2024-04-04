@@ -34,8 +34,8 @@ function Footer() {
             <div className="container">
                 <div className="row align-items-end">
                     <div className="copyright col text-start">
-                        <i className="bi bi-globe-asia-australia" style={{ color: '#f37523', fontSize: '20px' }}></i>
-                        <span style={{ color: '#f2ede4', fontSize: '20px' }}> Kaja</span>
+                        <img src="/image2vector.svg" alt="logo" className="logo" style={{ width: '30px', height: '30px' }} />
+                        <span style={{ color: '#f2ede4', fontSize: '25px',fontWeight: 'bolder' }}> Kaja</span>
                     </div>
                     <div className="copyright col text-center" style={{  fontSize: '12px', color: '#878e7f' }}>
                         All rights Reserved <i className="bi bi-c-circle" ></i> <b>Audia Winniar Savitri 2024</b>

@@ -15,7 +15,12 @@ const RegistrationForm = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
+        name: '',
         password: '',
+        passwordRepeat: '',
+        role: 'admin',
+        profilePictureUrl: '',
+        phoneNumber: '',
     });
 
     const handleChange = (e) => {
@@ -31,10 +36,20 @@ const RegistrationForm = () => {
 
         const payload = {
             email: formData.email,
-            password: formData.password
+            name: formData.name,
+            password: formData.password,
+            passwordRepeat: formData.passwordRepeat,
+            role: formData.role,
+            profilePictureUrl: formData.profilePictureUrl,
+            phoneNumber: formData.phoneNumber
+
         };
         axios
-            .post('https://reqres.in/api/register', payload)
+            .post('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/register', payload,{
+                headers: {
+                    'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c'
+                }
+            })
             .then((response) => {
                 setNotif("Register Success");
                 const token = response.data.token;
@@ -46,7 +61,7 @@ const RegistrationForm = () => {
             })
             .catch((error) => {
                 console.log(error.response);
-                setNotifError(error.response.data.error);
+                setNotifError(error.response.data.message);
                 setShowModal(true);
             });
     };
@@ -73,22 +88,51 @@ const RegistrationForm = () => {
                         <div className="rightColumn col-md-6">
                             <form onSubmit={handleSubmit}>
                                 <h2>Register</h2>
-                                <div className="mb-3">
+                                <div className="mb-1">
                                     <label htmlFor="email" className="form-label">Email ID</label>
-                                    <input type="email" className="form-control" id="email" name="email" onChange={handleChange} />
+                                    <input type="email" className="form-control" id="email" name="email" style={{ fontSize: '12px'}} onChange={handleChange} />
                                 </div>
-                                <div className="mb-3">
+                                <div className="mb-1">
+                                    <label htmlFor="name" className="form-label">Name</label>
+                                    <input type="type" className="form-control" id="name" name="name" style={{ fontSize: '12px'}} onChange={handleChange} />
+                                </div>
+                                <div className='mb-1 row'>
+                                <div className="col-6">
                                     <label htmlFor="password" className="form-label">Password</label>
-                                    <input type="password" className="form-control" id="password" name="password" onChange={handleChange} />
+                                    <input type="password" className="form-control1" id="password" name="password" style={{ fontSize: '12px'}} onChange={handleChange} />
                                 </div>
-                                <div className="mb-3 form-check">
-                                    <input type="checkbox" className="form-check-input" id="terms" />
-                                    <label className="form-check-label" htmlFor="terms">I Accept terms and conditions & privacy policy</label>
+                                <div className="col-6">
+                                    <label htmlFor="passwordRepeat" className="form-label">Re-password</label>
+                                    <input type="password" className="form-control1" id="passwordRepeat" name="passwordRepeat" style={{ fontSize: '12px'}} onChange={handleChange} />
                                 </div>
-                                <button type="submit" className="btn1 btn">Register</button>
-                                {!!notif.length && <h3>{notif}</h3>}
+                                </div>
+                                <div className="mb-1 row">
+                                <div className="col-6">
+                                    <label htmlFor="roleSelect" className="form-label">Select Role</label>
+                                    <select
+                                    className="form-control1"
+                                    id="roleSelect"
+                                    name="role"
+                                    onChange={handleChange}
+                                    style={{ fontSize: '10px'}}
+                                    >
+                                    <option value="admin" onChange={handleChange}>Admin</option>
+                                    <option value="user" onChange={handleChange}>User</option>
+                                    </select>
+                                </div>
+                                <div className="col-6">
+                                    <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
+                                    <input type="number" className="form-control1" id="phoneNumber" name="phoneNumber" style={{ fontSize: '12px'}} onChange={handleChange} />
+                                </div>
+                                </div>
+                                <div className="mb-1">
+                                    <label htmlFor="profilePictureUrl" className="form-label">Profile Picture Url</label>
+                                    <input type="imageUrl" className="form-control" id="profilePictureUrl" name="profilePictureUrl" style={{ fontSize: '12px'}} onChange={handleChange} />
+                                </div>
+                                <button type="submit" className="btn1 btn">Register</button>{!!notif.length && <p className='notif'>{notif}</p>}
+                                
                                 <Modal show={showModal} onHide={() => setShowModal(false)}>
-                                    <Modal.Header closeButton>
+                                    <Modal.Header closeButton> error
                                     </Modal.Header>
                                     <Modal.Body><h4>{notifError}</h4></Modal.Body>
                                 </Modal>

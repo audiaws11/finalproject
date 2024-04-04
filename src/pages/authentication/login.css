@@ -147,6 +147,44 @@ h4 {
     
 
     .tagline {
+        padding-left: 10px;
+        font-size: 30px;
+        text-align: left; 
+    }
+
+    .title {
+        font-size: 20px;
+        text-align: center; 
+        margin-top: 5px;
+    }
+
+    .loginpage {
+        height: auto; 
+        min-height: 100vh; 
+        padding-bottom: 20px;
+        width: 104vw;
+    }
+
+   
+}
+
+
+/* Responsive styles for mobile devices */
+@media (max-width: 320px) {
+    .login-container {
+        height: auto; 
+        margin-top: 60px; 
+    }
+
+    .login-box {
+        width: 100%;
+        height: max-content; 
+        margin-top: 100px;
+    }
+
+    
+
+    .tagline {
         padding-top: 20px; 
         padding-left: 10px;
         font-size: 20px;
