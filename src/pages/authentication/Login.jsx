@@ -34,7 +34,7 @@ const Login = () => {
       axios
         .post('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/login', payload, {
           headers: {
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c' //
+            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c' 
           }
         })
         .then((response) => {
@@ -43,7 +43,7 @@ const Login = () => {
           localStorage.setItem("token", token);
           console.log("response", response);
           setTimeout(() => {
-            navigate("/");
+            navigate("/dashboard");
           }, 2000);
         })
         .catch((error) => {

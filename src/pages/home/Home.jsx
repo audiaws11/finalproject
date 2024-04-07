@@ -1,22 +1,65 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import 'aos/dist/aos.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from 'react-bootstrap'; // Make sure Carousel is imported correctly
 import Layout from "../../components/layout/Layout";
 import './home.css';
+import axios from "axios";
 
 const Home = () => {
+    const [banners, setBanners] = useState([]);
+    const [categories, setCategories] = useState([]);
+
+    const getBanner = () => {
+        axios
+            .get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/banners',{
+                headers: {
+                    'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c'}
+            })
+            .then((response) => {
+                setBanners(response.data.data);
+                console.log('banner',response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    const getCategories = () => {
+        axios
+            .get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/categories',{
+                headers: {
+                    'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c'
+                }
+            })
+            .then((response) => {
+                setCategories(response.data.data);
+                console.log('category',response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    useEffect(() => {
+        getBanner();
+    }, []);
+    
+    useEffect(() => {
+        getCategories();
+    }, []);
+
     useEffect(() => {
         AOS.init();
     }, []);
 
     return (
         <Layout>
-            {/* Header */}
-            <div className="container-fluid main">
-                <div className="container-fluid article1">
-                    <Carousel interval={3000} wrap={true} >
+           {/* Header */}
+                <div className="container-fluid main">
+                    <div className="container-fluid article1">
+                        <Carousel interval={3000} wrap={true} >
                         <Carousel.Item>
                             <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>
@@ -45,7 +88,23 @@ const Home = () => {
                                 </div>
                             </div>
                         </Carousel.Item>
-                        <Carousel.Item>
+                        {banners.map((banner, index) => (
+                            <Carousel.Item key={index}> {/* Ensure you have a unique key for each item */}
+                                <div className="container travel-layout" style={{ backgroundImage: `url(${banner.imageUrl})`, height: '500px' }}>
+                                    <div className="row" style={{ height: '100%' }}>{banner.title}
+                                        <div className="col-6 text-left header-section">
+                                            <h1>
+                                                Explore<br />
+                                                <span style={{ color: '#f37523' }}>the world</span><br /> with us
+                                            </h1>
+                                            <p>Discover possibilities of travelling!</p>
+                                            <button className="btn btn-orange">Explore</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Carousel.Item>
+                        ))}
+                         <Carousel.Item>
                             <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapercave.com/wp/wp9247775.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>
                                     <div className="col-6 text-left header-section">
@@ -59,9 +118,9 @@ const Home = () => {
                                 </div>
                             </div>
                         </Carousel.Item>
-                    </Carousel>
-                </div>
-
+                        </Carousel>
+                    </div>
+                
                 {/* Search Bar */}
                 <div className="bar-search d-flex justify-content-center my-4" style={{ backgroundColor: '#f2ede4' }}>
                 <div className="search-bar p-3 rounded-4 d-flex align-items-center" style={{ maxWidth: '1500px' }}>
@@ -92,42 +151,25 @@ const Home = () => {
                 <button className="btn btn-success rounded-pill px-4 ms-3">Search</button>
             </div>
             </div>
-
-            {/* Category */}
-            <h2 className="text-center my-4" style={{ fontWeight: 'bolder', paddingTop: '90px', paddingBottom: '50px', fontSize: '30px' }}> Travel categories</h2>
-            <div className="category d-flex justify-content-center `" style={{ backgroundColor: '#f2ede4' }}>
-                <div className="row" style={{ maxWidth: '1500px' }}>
-                    <div className="box-card col-md-4">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img src="https://wallpapercave.com/wp/wp3103579.jpg" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Travel</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
+            
+           {/* Category */}
+           <h2 className="category-header"> Travel categories</h2>
+                <div className="category-container">
+                {categories.length > 0 ? (
+                    categories.map((category, index) => (
+                    <div className="box-card" key={index} style={{ backgroundColor: category.color }}>
+                        <div className="card">
+                        <img src={category.imageUrl} className="card-img-top" alt={`${category.name}`} />
+                        <div className="card-body">
+                            <h5 className="card-title">{category.name}</h5>
+                        </div>
                         </div>
                     </div>
-                    <div className="box-card col-md-4">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img src="https://wallpapercave.com/wp/wp3103579.jpg" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Travel</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="box-card col-md-4">
-                        <div className="card" style={{ width: '18rem' }}>
-                            <img src="https://wallpapercave.com/wp/wp3103579.jpg" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">Travel</h5>
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
-        
+                    ))
+                ) : (
+                    <p>Loading categories...</p>
+                )}
                 </div>
-            </div>
-
             </div>
         
         </Layout>
@@ -135,3 +177,4 @@ const Home = () => {
 };
 
 export default Home;
+

@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+
+.sidebar {
+    background-color: rgb(242, 237, 228,0.9);
+    width: 180px;
+    height: 100vh;
+    padding: 10px;
+    box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 1;
+    z-index: 1000;
+    transition: width 0.3s ease;
+    font-family: "Wix Madefor Text", sans-serif
+  }
+  
+  div .logo{
+    width: 100%;
+    color: #333;
+    padding: 15px 10px;
+    text-align: center;
+    font-weight: 800;
+    transition: background-color 0.3s;
+    font-family: "Wix Madefor Text", sans-serif
+  }
+  .sidebar-item {
+    width: 100%;
+    color: #f37523;
+    padding: 4px 0;
+    padding-top: 3x;
+    padding-bottom: 3px;
+    text-align: left;
+    transition: background-color 0.3s;
+    display: flex; /* This will align the icon and text inline */
+    align-items: center; /* This centers the items vertically */
+    gap: 0.5rem; 
+    margin-top: 10px;
+
+  }
+
+
+.navbottom {
+    font-weight: lighter;
+    font-size: 14px;
+    width: 100%;
+    color: #333;
+    padding: 10px 10px;
+    text-align: left;
+    font-weight: 500;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    transition: background-color 0.3s;
+    display: flex; /* This will align the icon and text inline */
+    align-items: center; /* This centers the items vertically */
+    gap: 0.5rem;
+    margin-top: 10px;
+  }
+
+.navbottom span {
+    padding: 10px 10px;
+    text-align: left;
+  
+}
+.navbottom:hover {
+    background-color: rgb(80, 115, 86);
+    color: white;
+    border-radius: 10px; /* Light grey background */
+  }
+
+  
+  .sidebar-item.active, .sidebar-item:hover {
+    background-color: rgb(80, 115, 86);
+    color: white;
+    border-radius: 10px; /* Light grey background */
+  }
+
+  .navbottom :hover {
+    border-radius: 10px;
+  }
+  
+  .sidebar-item i {
+    display: block;
+    font-size: 20px; 
+    margin-left: 20px;
+    /* Adjust icon size as necessary */
+  }
+  
+  .sidebar-item span {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
+ 
+ 

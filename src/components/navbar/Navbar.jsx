@@ -17,7 +17,7 @@ function AppNavbar() {
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>
-                        <img src="/image2vector.svg" alt="logo" className="logo" style={{ width: '35px', height: '35px' }} />
+                        <img src="/image2vector.svg" alt="logo" className="logo" style={{ width: '60px', height: '60px' }} />
                          Kaja
                     </Navbar.Brand>
                 </LinkContainer>
