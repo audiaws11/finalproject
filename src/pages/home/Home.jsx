@@ -5,37 +5,41 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from 'react-bootstrap'; // Make sure Carousel is imported correctly
 import Layout from "../../components/layout/Layout";
 import './home.css';
-import axios from "axios";
+import { getBanners, getCategories, getPromos } from "../../api/api";
+
 
 const Home = () => {
     const [banners, setBanners] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [promos, setPromos] = useState([]);
 
-    const getBanner = () => {
-        axios
-            .get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/banners',{
-                headers: {
-                    'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c'}
-            })
+    const fetchBanner = () => {
+        getBanners()
             .then((response) => {
                 setBanners(response.data.data);
-                console.log('banner',response.data.data);
+                console.log('banner', response.data.data);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }
+    };
 
-    const getCategories = () => {
-        axios
-            .get('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/categories',{
-                headers: {
-                    'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c'
-                }
-            })
+    const fetchCategories = () => {
+        getCategories()
             .then((response) => {
                 setCategories(response.data.data);
-                console.log('category',response.data.data);
+                console.log('category', response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    const fetchPromo = () => {
+        getPromos()
+            .then((response) => {
+                setPromos(response.data.data);
+                console.log('promo', response.data.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -43,33 +47,28 @@ const Home = () => {
     };
 
     useEffect(() => {
-        getBanner();
-    }, []);
-    
-    useEffect(() => {
-        getCategories();
-    }, []);
-
-    useEffect(() => {
+        fetchBanner();
+        fetchCategories();
+        fetchPromo();
         AOS.init();
     }, []);
 
     return (
         <Layout>
            {/* Header */}
-                <div className="container-fluid main">
+                <div className="container-fluid main" >
                     <div className="container-fluid article1">
-                        <Carousel interval={3000} wrap={true} >
+                        <Carousel interval={4000} wrap={true} data-aos="zoom-in" data-aos-duration="500">
                         <Carousel.Item>
                             <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>
-                                    <div className="col-6 text-left header-section">
-                                        <h1 >
+                                    <div className="col-6 text-left header-section" > 
+                                        <h1 data-aos="fade-right" data-aos-duration="700">
                                             Explore<br />
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
-                                        </h1>
-                                        <p >Discover possibilities of travelling!</p>
-                                        <button className="btn btn-orange" >Explore</button>
+                                        </h1 >
+                                        <p data-aos="fade-right" data-aos-duration="900">Discover possibilities of travelling!</p>
+                                        <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +150,9 @@ const Home = () => {
                 <button className="btn btn-success rounded-pill px-4 ms-3">Search</button>
             </div>
             </div>
+
             
+                            
            {/* Category */}
            <h2 className="category-header"> Travel categories</h2>
                 <div className="category-container">
@@ -170,7 +171,40 @@ const Home = () => {
                     <p>Loading categories...</p>
                 )}
                 </div>
+
+            {/* Promo */}
+            <div className="promo1 container">
+                    {promos.length > 0 ? (
+                         <div className="row">
+                         <div className="header col-6" data-aos="fade-up" >
+                             <h1>{promos[0].title}</h1>
+                             <div className="pricing">
+                             <p>{promos[0].description}</p>
+                             <p >from <span className="price">Rp. {promos[0].promo_discount_price} </span>/ person</p>
+                             </div>
+                             <button className="explore-button">Explore Offer</button>
+                         </div>
+                         <div className="images-wrapper col-6">
+                         <div className="images row">
+                             <div className="col-6">
+                             <img src="https://elenpradera.com/wp-content/uploads/2018/12/DSC05684_LR_Blog.jpg" alt="imagePromo1" className="landscape1" data-aos="zoom-in"/>
+                             <img src="https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/revision-2019/all-revision-destination/bromo22.jpg" alt="imagePromo2" className="coastline" data-aos="zoom-in"/>
+                             </div>
+                             <div className="hot-offer-wrapper col-6">
+                             <img src={promos[0].imageUrl} alt="imagePromo3" className="landscape2" data-aos="zoom-in"/>
+                                 <span className="hot-offer-tag">HOT OFFER</span>
+                             </div>
+                         </div>
+                         </div>
+                     </div>  
+                    ) : (
+                        <p>Loading promos...</p>
+                        
+                    )}
             </div>
+        </div>
+
+            
         
         </Layout>
     );

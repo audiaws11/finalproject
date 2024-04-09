@@ -30,8 +30,8 @@ function AppNavbar() {
                         <LinkContainer to="/login">
                             <Nav.Link className={isActive('/login')}>Activity</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/register">
-                            <Nav.Link className={isActive('/register')}>Our Offer</Nav.Link>
+                        <LinkContainer to="/offer">
+                            <Nav.Link className={isActive('/offer')}>Our Offer</Nav.Link>
                         </LinkContainer>
                     </Nav>
                     <Nav>
