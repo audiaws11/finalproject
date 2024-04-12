@@ -20,3 +20,33 @@ export const getPromos = () => {
     headers: { 'apiKey': API_KEY }
   });
 }
+
+export const getActivities = () => {
+  return axios.get(`${BASE_URL}/activities`, {
+    headers: { 'apiKey': API_KEY }
+  });
+}
+
+export const login = (payload) => {
+  return axios.post(`${BASE_URL}/login`, payload, {
+    headers: { 'apiKey': API_KEY }
+  });
+};
+
+export const register = (payload) => {
+  return axios.post(`${BASE_URL}/register`, payload, {
+    headers: { 'apiKey': API_KEY }
+  });
+}
+
+export const getActivityById = (id) => {
+  return axios.get(`${BASE_URL}/activity/${id}`, {
+    headers: { 'apiKey': API_KEY }
+  });
+}
+
+export const getOfferById = (id) => {
+  return axios.get(`${BASE_URL}/promo/${id}`, {
+    headers: { 'apiKey': API_KEY }
+  });
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Modal} from 'react-bootstrap';
-import axios from 'axios';
+import { login } from '../../api/api';
 import './login.css';
 import Layout from "../../components/layout/Layout";
 
@@ -26,22 +26,19 @@ const Login = () => {
     const handleSubmit = (event) => {
       event.preventDefault();
       const payload = {
-        email : email,
+        email: email,
         password: password,
       };
       setLoading(true);
-
-      axios
-        .post('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/login', payload, {
-          headers: {
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c' 
-          }
-        })
+    
+      login(payload)
         .then((response) => {
           setNotif ("Login Success");
           const token = response.data.token;
+          const data = response.data.data
           localStorage.setItem("token", token);
-          console.log("response", response);
+          localStorage.setItem("data", data);
+          console.log("response", response.data);
           setTimeout(() => {
             navigate("/dashboard");
           }, 2000);

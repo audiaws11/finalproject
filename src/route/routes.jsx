@@ -3,6 +3,9 @@ import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Offer from "../pages/promo/Offer";
+import DetailOffer from "../pages/promo/DetailOffer";
+import Activity from "../pages/activity/Activity";
+import DetailActivity from "../pages/activity/DetailActivity";
 
 export const routeList = [
    
@@ -21,6 +24,18 @@ export const routeList = [
     {
         path: "/offer",
         element: <Offer />
+    },
+    {
+        path: "/offer/:id",
+        element: <DetailOffer />
+    },
+    {
+        path: "/activity",
+        element: <Activity/>
+    },
+    {
+        path: "/activity/:id",
+        element: <DetailActivity />
     },
     {
         path: "/dashboard",

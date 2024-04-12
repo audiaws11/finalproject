@@ -1,5 +1,6 @@
 
 import { getPromos } from "../../api/api";
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import Layout from "../../components/layout/Layout";
@@ -9,6 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Offer = () => {
     const [promos, setPromos] = useState([]);
+    const [isZoomed, setIsZoomed] = useState([]);
+    const colors = ['#f2ede4', '#e2d6ba', '#e2d6ba', '#547255', '#547255', '#547255', '#d5d2cd', '#f37523'];
+    const navigate = useNavigate();
 
     const fetchPromo = () => {
         getPromos()
@@ -49,55 +53,25 @@ const Offer = () => {
                 {/* content */}
                 <div className="container mt-4">
                     <div className="row trip-row">
-                    <p className="offer-title">Trips available</p>
+                    <p className="offer-title">{promos.length} trips available</p>
                     {promos.map((promo, index) => (
-                        
-                        <div className="col-3 mb-4" key={index}>
-                        <div className="trip-card">
-                            <img src={promo.imageUrl} className="trip-image" alt="tripname" />
-                            <div className="trip-info">
-                            <h5 className="trip-name">{promo.title}</h5>
-                            <p className="trip-location">Promo code: <span>{promo.promo_code}</span></p>
-                            <p className="trip-price">from <span>Rp {promo.promo_discount_price}</span></p>
+                        <div className="col-md-3 mb-4" key={index}>
+                            <div className={`trip-card ${isZoomed ? 'zoom-in' : ''}`} 
+                                onClick={() => {
+                                    setIsZoomed(true); 
+                                    setTimeout(() => navigate(`/offer/${promo.id}`), 300); 
+                                }} 
+                                onMouseLeave={() => setIsZoomed(false)}   style={{backgroundImage: `url(${promo.imageUrl})`}} >
+                            <img src={promo.imageUrl} className="trip-image" alt={promo.title} />
+                            <div className={`trip-info trip-info-color-${(index % colors.length) + 1}`}>
+                                <h5 className="trip-name">{promo.title}</h5>
+                                <p className="trip-location">Promo code: <span>{promo.promo_code}</span></p>
+                                <p className="trip-price">from <span>IDR {promo.promo_discount_price}</span></p>
+                            </div>
                             </div>
                         </div>
-                    </div>  
-                    ))}
-{/* 
-                     <div className="col-3 mb-4">
-                        <div className="trip-card">
-                            <img src="https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg" className="trip-image" alt="tripname" />
-                            <div className="trip-info">
-                            <h5 className="trip-name">Name</h5>
-                            <p className="trip-location">Location</p>
-                            <p className="trip-price">from <span>Rp </span></p>
-                            </div>
-                        </div>
-                    </div> 
+                        ))}
 
-                     <div className="col-3 mb-4">
-                        <div className="trip-card">
-                            <img src="https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg" className="trip-image" alt="tripname" />
-                            <div className="trip-info">
-                            <h5 className="trip-name">Name</h5>
-                            <p className="trip-location">Location</p>
-                            <p className="trip-date">Date</p>
-                            <p className="trip-price">from <span>$0000</span></p>
-                            </div>
-                        </div>
-                    </div> 
-
-                     <div className="col-3 mb-4">
-                        <div className="trip-card">
-                            <img src="https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg" className="trip-image" alt="tripname" />
-                            <div className="trip-info">
-                            <h5 className="trip-name">Name</h5>
-                            <p className="trip-location">Location</p>
-                            <p className="trip-date">Date</p>
-                            <p className="trip-price">from <span>$0000</span></p>
-                            </div>
-                        </div>
-                    </div>   */}
 
 
                     </div>

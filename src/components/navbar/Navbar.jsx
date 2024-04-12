@@ -27,8 +27,8 @@ function AppNavbar() {
                         <LinkContainer to="/">
                             <Nav.Link className={isActive('/')}>Home</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/login">
-                            <Nav.Link className={isActive('/login')}>Activity</Nav.Link>
+                        <LinkContainer to="/activity">
+                            <Nav.Link className={isActive('/activity')}>Activity</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/offer">
                             <Nav.Link className={isActive('/offer')}>Our Offer</Nav.Link>

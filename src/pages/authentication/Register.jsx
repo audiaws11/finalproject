@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Modal} from 'react-bootstrap';
+import { register } from '../../api/api';
 import Layout from '../../components/layout/Layout';
-import axios from 'axios';
 import AOS from "aos";
 import 'aos/dist/aos.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -44,23 +44,16 @@ const RegistrationForm = () => {
             phoneNumber: formData.phoneNumber
 
         };
-        axios
-            .post('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/register', payload,{
-                headers: {
-                    'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c'
-                }
-            })
+        register(payload)
             .then((response) => {
                 setNotif("Register Success");
                 const token = response.data.token;
                 localStorage.setItem("token", token);
-                console.log(response);
                 setTimeout(() => {
                     navigate("/login");
                 }, 3000);
             })
             .catch((error) => {
-                console.log(error.response);
                 setNotifError(error.response.data.message);
                 setShowModal(true);
             });

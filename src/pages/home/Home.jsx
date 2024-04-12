@@ -6,6 +6,7 @@ import { Carousel } from 'react-bootstrap'; // Make sure Carousel is imported co
 import Layout from "../../components/layout/Layout";
 import './home.css';
 import { getBanners, getCategories, getPromos } from "../../api/api";
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 const Home = () => {
@@ -68,7 +69,9 @@ const Home = () => {
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
                                         </h1 >
                                         <p data-aos="fade-right" data-aos-duration="900">Discover possibilities of travelling!</p>
+                                        <LinkContainer to="/activity">
                                         <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
+                                        </LinkContainer>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +85,9 @@ const Home = () => {
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
                                         </h1>
                                         <p >Discover possibilities of travelling!</p>
-                                        <button className="btn btn-orange" >Explore</button>
+                                        <LinkContainer to="/activity">
+                                        <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
+                                        </LinkContainer>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +102,9 @@ const Home = () => {
                                                 <span style={{ color: '#f37523' }}>the world</span><br /> with us
                                             </h1>
                                             <p>Discover possibilities of travelling!</p>
-                                            <button className="btn btn-orange">Explore</button>
+                                            <LinkContainer to="/activity">
+                                                <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
+                                            </LinkContainer>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +119,9 @@ const Home = () => {
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
                                         </h1>
                                         <p>Discover possibilities of travelling!</p>
-                                        <button className="btn btn-orange">Explore</button>
+                                        <LinkContainer to="/activity">
+                                            <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
+                                        </LinkContainer>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +191,7 @@ const Home = () => {
                              <p>{promos[0].description}</p>
                              <p >from <span className="price">Rp. {promos[0].promo_discount_price} </span>/ person</p>
                              </div>
-                             <button className="explore-button">Explore Offer</button>
+                            <LinkContainer to="/offer"><button className="explore-button">Explore Offer</button></LinkContainer>
                          </div>
                          <div className="images-wrapper col-6">
                          <div className="images row">
