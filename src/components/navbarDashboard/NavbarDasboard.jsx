@@ -1,7 +1,19 @@
 
-import './navbarDashboard.css'; // Make sure to create a corresponding CSS file
-
+import './navbarDashboard.css'; 
+import { useCallback } from 'react';
+import { getLogout } from '../../api/api';
 const NavbarDashboard = () => {
+    const handleLogout = useCallback(async () => {
+        const result = await getLogout();
+        if (result) {
+           
+            console.log('Redirecting to login page...')
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 1000);
+        }
+    }, []);
+
   return (
         
         <div className="sidebar">
@@ -38,7 +50,7 @@ const NavbarDashboard = () => {
             </div>
             <div className="navbottom">
                 <i className="bi bi-box-arrow-left"></i>
-                <span>Logout</span>
+                <span onClick={handleLogout} >Logout</span>
             </div>
         </div>
     

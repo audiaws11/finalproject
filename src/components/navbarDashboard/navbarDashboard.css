@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
 
 .sidebar {
-    background-color: rgb(242, 237, 228,0.9);
+    background-color: rgb(242, 237, 228);
     width: 180px;
     height: 100vh;
     padding: 10px;
@@ -67,19 +67,19 @@
 .navbottom:hover {
     background-color: rgb(80, 115, 86);
     color: white;
-    border-radius: 10px; /* Light grey background */
+    border-radius: 10px;
+    cursor: pointer;
+    
   }
 
   
   .sidebar-item.active, .sidebar-item:hover {
     background-color: rgb(80, 115, 86);
     color: white;
-    border-radius: 10px; /* Light grey background */
+    border-radius: 10px; 
   }
 
-  .navbottom :hover {
-    border-radius: 10px;
-  }
+ 
   
   .sidebar-item i {
     display: block;

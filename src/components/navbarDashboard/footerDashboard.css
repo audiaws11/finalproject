@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+
+body {
+    font-family: "Wix Madefor Text", sans-serif
+
+}
+
+
+
+#footer{
+    background: #142316;
+    color: #ffffff;
+    font-weight: bold;
+    width: 100%;
+    padding-left: 200px;
+    padding-top: -20px;
+    padding-bottom: 30px;
+    padding-right: 50px;
+    
+
+}
+
+
+.logo {
+    color: #ADADAD;
+    font-size: 18px;
+}
+
+.copyright {
+    color: #f2ede4 ;
+    font-size: 14px;
+    font-weight: lighter;
+    font-family: "Wix Madefor Text", sans-serif;
+}
+
+.card-img-top {
+    height:400px;
+    object-fit: cover;
+}
+a {
+    text-decoration: none;
+  }
+
+
+@media (max-width: 768px) {
+   
+    #followus {
+        color: #ADADAD;
+        font-weight: lighter;
+        font-size: 12px;
+    }
+   
+    .copyright {
+        color: #f2ede4 ;
+        font-size: 8px;
+        font-weight: lighter;
+        font-family: "Wix Madefor Text", sans-serif;
+    }
+
+   
+}
+
+
+
+

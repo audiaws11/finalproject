@@ -37,7 +37,7 @@ const Login = () => {
           const token = response.data.token;
           const data = response.data.data
           localStorage.setItem("token", token);
-          localStorage.setItem("data", data);
+          localStorage.setItem("data", JSON.stringify(data));
           console.log("response", response.data);
           setTimeout(() => {
             navigate("/dashboard");

@@ -21,15 +21,22 @@ body {
     height: 35px;
     width: 200px;
 }
-.btn{
+.button1{
     font-size: 12px;
     background-color: #f37523;
     color: white;
     font-weight:bolder;
-    height: 30px;
+    height: 25px;
     width: 150px;
+    padding: 2px;
     font-family: "Wix Madefor Text", sans-serif;
-    font-optical-sizing: auto;
+
+}
+
+.button1:hover{
+    background-color: white;
+    color: #f37523;
+    border: 1px solid #f37523;
 }
 .nav-link-active {
     color: #f37523 !important; /* Change the color to orange for the active link */

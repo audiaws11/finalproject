@@ -1,17 +1,237 @@
+import { useState, useEffect } from "react";
+import FooterDashboard from "../../components/navbarDashboard/FooterDashboard";
+import {  getActivities, getCategories, getPromos, getUser } from "../../api/api";
+import { Modal, Button, Form } from 'react-bootstrap';
+import axios from "axios";
 import LayoutDashboard from "../../components/layout/LayoutDashboard";
-import './dasboard.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './dasboard.css';
+
 
 const Dashboard = () => {
+    const [latestActivities, setLatestActivities] = useState([]);
+    const [activities, setActivities] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [promos, setPromos] = useState([]);
+    const [user, setUser] = useState({});
+    const [error, setError] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [profilePictureUrl, setProfilePictureUrl] = useState('');
+
+    useEffect(() => {
+        fetchLogin();
+        fetchActivity();
+        fetchCategories();
+        fetchPromo();
+    }, []);
+
+    useEffect(() => {
+        setName(user.name);
+        setEmail(user.email);
+        setPhoneNumber(user.phoneNumber);
+        setLatestActivities(activities.slice(0, 3));
+        setProfilePictureUrl(user.profilePictureUrl);
+    }, [user]);
+
+    const fetchCategories = () => {
+      getCategories()
+          .then((response) => {
+              setCategories(response.data.data);
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+  };
+    const fetchPromo = () => {
+      getPromos()
+          .then((response) => {
+              setPromos(response.data.data);
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+  };
+    const fetchActivity = () => {
+      getActivities()
+          .then((response) => {
+              setActivities(response.data.data);
+              
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+  };
+    const fetchLogin = () => {
+        const token = localStorage.getItem("token");
+        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
+        const headers = {
+            'Authorization': `Bearer ${token}`,
+            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
+            'Content-Type': 'application/json'
+        };
+
+        axios.get(API_URL, { headers })
+            .then(res => {
+                setUser(res.data.data);
+            })
+            .catch(err => {
+                setError('Failed to fetch data. Please try again later.');
+            });
+    };
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        switch (name) {
+            case 'name': setName(value); break;
+            case 'email': setEmail(value); break;
+            case 'phoneNumber': setPhoneNumber(value); break;
+            case 'profilePictureUrl': setProfilePictureUrl(value); break;
+            default: break;
+        }
+    };
+
+    const handleSaveChanges = () => {
+        const token = localStorage.getItem("token");
+        const API_URL = `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/update-profile`;
+        const headers = {
+            'Authorization': `Bearer ${token}`,
+            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
+            'Content-Type': 'application/json'
+        };
+        const data = {
+            name,
+            email,
+            phoneNumber,
+            profilePictureUrl
+        };
+
+        axios.post(API_URL, data, { headers })
+            .then(res => {
+                setUser(res.data.data);
+                console.log(res.data.data);
+                setShowModal(false);
+                window.location.reload();
+            })
+            .catch(err => {
+                setError('Failed to update profile. Please try again later.');
+            });
+    };
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
     return (
-        <LayoutDashboard >
-          <div className="article1">
-         <header >
-           <div className="dashboard"></div>
-        </header>
-        </div>
+        <LayoutDashboard>
+            <div style={{ backgroundColor: '#f7f5f2', height: 'max-content', paddingBottom: '50px' }}>
+                {/* header */}
+                <header className="header1">
+                    <div className="dashboard">
+                        <h2>{user.name || "Guest"} ({user.email})<img src={user.profilePictureUrl} alt="Profile" /></h2>
+                    </div>
+                </header>
+                {/* content dashboard */}
+                <div className="content-dashboard">
+                    <div className="row">
+                        <div className="card card-dashboard row">
+                            <div className="card-body ">
+                                <h1>Hi, {user.name}!</h1>
+                                <p className="role"><i className="bi bi-person-check"></i> {user.role}</p>
+                                <p className="email"><i className="bi bi-envelope-fill"></i> {user.email}</p>
+                                <p className="phone"><i className="bi bi-telephone-fill"></i> {user.phoneNumber}</p>
+                            </div>
+                            <div className="card-body ">
+                                <button className="button-edit" onClick={() => setShowModal(true)}>Edit Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* content 1 */}
+                <div className="content-1">
+                    <div className="card-content-1">
+                    <h2 className="content-title">All Job Posted</h2>
+                    <div className="container text-center">
+                      <div className="row align-items-center">
+                        <div className="col col-view">
+                          <p className="title">total promo:</p>
+                          <p className="posting"> {promos.length} posting</p>
+                        </div>
+                        <div className="col col-view">
+                          <p className="title">total category:</p>
+                          <p className="posting"> {categories.length} posting</p>
+                        </div>
+                        <div className="col col-view">
+                          <p className="title">total activity:</p>
+                          <p className="posting"> {activities.length} posting</p>
+                        </div>
+                      </div>
+                    </div>
+                        
+                    </div>
+                </div>
+                {/* Latest Activity Section */}
+            
+
+                <div className="content-1">
+                    <div className="card-content-1">
+                    <div className="latest-activity-section">
+                      <h2 className="content-title">Latest Activity</h2>
+                      <ul>
+                        {latestActivities.map((activity, index) => (
+                          <li key={index}>
+                            <span className="activity-title">{activity.title}</span>
+                            <span className="activity-date"> ( {activity.updatedAt.slice(0, 10)} <i className="bi bi-alarm"></i>: {activity.updatedAt.slice(11, 19)} )</span>
+                            <p className="activity-description">{activity.description}</p>
+                          </li>
+                        ))}
+                      </ul>
+                  </div>
+                  </div></div>
+
+            
+
+            </div>
+            <FooterDashboard />
+
+            
+
+
+            {/* modal */}
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit Personal Information</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formName">
+                            <Form.Label>Full Name</Form.Label>
+                            <Form.Control type="text" name="name" value={name} onChange={handleInputChange} />
+                        </Form.Group>
+                        <Form.Group controlId="formEmail">
+                            <Form.Label>Email Address</Form.Label>
+                            <Form.Control type="email" name="email" value={email} onChange={handleInputChange} />
+                        </Form.Group>
+                        <Form.Group controlId="formPhoneNumber">
+                            <Form.Label>Phone Number</Form.Label>
+                            <Form.Control type="number" name="phoneNumber" value={phoneNumber} onChange={handleInputChange} />
+                        </Form.Group>
+                        <Form.Group controlId="formChangeProfilePicture">
+                            <Form.Label>Profile Picture</Form.Label>
+                            <Form.Control type="url" name="profilePictureUrl" value={profilePictureUrl} onChange={handleInputChange} />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
+                    <Button variant="primary" onClick={handleSaveChanges}>Save Changes</Button>
+                </Modal.Footer>
+            </Modal>
         </LayoutDashboard>
-        
-    )
+    );
 }
 
 export default Dashboard;

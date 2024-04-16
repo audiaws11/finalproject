@@ -37,7 +37,7 @@ function AppNavbar() {
                     <Nav>
                         <LinkContainer to="/login">
                             <Nav.Link className="nav-style">
-                                <button className='btn rounded-5 border-0'><i className="bi bi-person"></i> Login / Register</button>
+                                <button className='button1 rounded-5 border-0'><i className="bi bi-person"></i> Login / Register</button>
                             </Nav.Link>
                         </LinkContainer>
                     </Nav>

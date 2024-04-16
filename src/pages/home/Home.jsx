@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
+import { Carousel } from 'react-bootstrap';
+import { getBanners, getCategories, getPromos } from "../../api/api";
+import { LinkContainer } from 'react-router-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import Layout from "../../components/layout/Layout";
 import AOS from "aos";
 import 'aos/dist/aos.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Carousel } from 'react-bootstrap'; // Make sure Carousel is imported correctly
-import Layout from "../../components/layout/Layout";
 import './home.css';
-import { getBanners, getCategories, getPromos } from "../../api/api";
-import { LinkContainer } from 'react-router-bootstrap';
-
 
 const Home = () => {
     const [banners, setBanners] = useState([]);
     const [categories, setCategories] = useState([]);
     const [promos, setPromos] = useState([]);
+    const navigate = useNavigate();
 
     const fetchBanner = () => {
         getBanners()
@@ -167,7 +168,7 @@ const Home = () => {
                 <div className="category-container">
                 {categories.length > 0 ? (
                     categories.map((category, index) => (
-                    <div className="box-card" key={index} style={{ backgroundColor: category.color }}>
+                    <div className="box-card" key={index} style={{ backgroundColor: category.color }} onClick={() => navigate(`/activities-by-category/${category.id}`)}>
                         <div className="card">
                         <img src={category.imageUrl} className="card-img-top" alt={`${category.name}`} />
                         <div className="card-body">

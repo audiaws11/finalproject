@@ -6,6 +6,7 @@ import Offer from "../pages/promo/Offer";
 import DetailOffer from "../pages/promo/DetailOffer";
 import Activity from "../pages/activity/Activity";
 import DetailActivity from "../pages/activity/DetailActivity";
+import ActivityByCategorires from "../pages/activity/ActivityByCategorires";
 
 export const routeList = [
    
@@ -32,6 +33,10 @@ export const routeList = [
     {
         path: "/activity",
         element: <Activity/>
+    },
+    {
+        path: "/activities-by-category/:id",
+        element: <ActivityByCategorires/>
     },
     {
         path: "/activity/:id",
