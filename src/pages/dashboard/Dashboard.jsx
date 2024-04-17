@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import FooterDashboard from "../../components/navbarDashboard/FooterDashboard";
-import {  getActivities, getCategories, getPromos, getUser } from "../../api/api";
+import {  getActivities, getCategories, getPromos} from "../../api/api";
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from "axios";
 import LayoutDashboard from "../../components/layout/LayoutDashboard";
@@ -20,6 +20,11 @@ const Dashboard = () => {
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [profilePictureUrl, setProfilePictureUrl] = useState('');
+    const [profilePictureFile, setProfilePictureFile] = useState(null);
+
+   
+
+
 
     useEffect(() => {
         fetchLogin();
@@ -93,32 +98,64 @@ const Dashboard = () => {
         }
     };
 
+    
+    const handleFileChange = (event) => {
+        if (event.target.files[0]) {
+            setProfilePictureFile(event.target.files[0]);
+        }
+    };
+
     const handleSaveChanges = () => {
-        const token = localStorage.getItem("token");
+        if (profilePictureFile) {
+            const formData = new FormData();
+            formData.append('image', profilePictureFile); 
+    
+            axios.post('https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/upload-image', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            .then(response => {
+                const newProfilePictureUrl = response.data.url;
+                setProfilePictureUrl(newProfilePictureUrl);
+                updateUserProfile(newProfilePictureUrl);
+                
+            
+                
+            })
+            .catch(error => {
+                console.error('Error uploading image:', error);
+                setError('Failed to upload new profile picture.');
+            });
+        } else {
+            updateUserProfile(profilePictureUrl);
+        }
+    };
+    
+    const updateUserProfile = (imageUrl) => {
         const API_URL = `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/update-profile`;
+        const data = { name, email, phoneNumber, profilePictureUrl: imageUrl };
         const headers = {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
             'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
             'Content-Type': 'application/json'
         };
-        const data = {
-            name,
-            email,
-            phoneNumber,
-            profilePictureUrl
-        };
-
+    
         axios.post(API_URL, data, { headers })
-            .then(res => {
-                setUser(res.data.data);
-                console.log(res.data.data);
-                setShowModal(false);
-                window.location.reload();
-            })
-            .catch(err => {
-                setError('Failed to update profile. Please try again later.');
-            });
+        .then(response => {
+            setUser(response.data.data);
+            setShowModal(false);
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('Failed to update profile:', error);
+            setError('Failed to update profile. Please try again later.');
+        });
     };
+
+  
 
     if (error) {
         return <div>Error: {error}</div>;
@@ -207,6 +244,7 @@ const Dashboard = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
+                       <img className="profile-picture" src={user.profilePictureUrl} alt="Profile" />
                         <Form.Group controlId="formName">
                             <Form.Label>Full Name</Form.Label>
                             <Form.Control type="text" name="name" value={name} onChange={handleInputChange} />
@@ -221,7 +259,7 @@ const Dashboard = () => {
                         </Form.Group>
                         <Form.Group controlId="formChangeProfilePicture">
                             <Form.Label>Profile Picture</Form.Label>
-                            <Form.Control type="url" name="profilePictureUrl" value={profilePictureUrl} onChange={handleInputChange} />
+                            <Form.Control type="file" name="profilePictureUrl" onChange={handleFileChange} />
                         </Form.Group>
                     </Form>
                 </Modal.Body>

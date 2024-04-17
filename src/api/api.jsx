@@ -72,6 +72,8 @@ export const postImage = (payload) => {
   });
 }
 
+
+
 export const getLogin = () => {
   return axios.get(`${BASE_URL}/user`, {
   
@@ -124,3 +126,14 @@ export const getLogout = async () => {
       return false;
   }
 }
+
+export const getAllProfile = async () => {
+  const response = await axios.get(`${BASE_URL}/all-user`, { 
+      headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'apiKey': API_KEY, 
+          'Content-Type': 'application/json'
+      }
+   });
+  return response.data;
+};

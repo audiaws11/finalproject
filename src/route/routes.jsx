@@ -7,6 +7,7 @@ import DetailOffer from "../pages/promo/DetailOffer";
 import Activity from "../pages/activity/Activity";
 import DetailActivity from "../pages/activity/DetailActivity";
 import ActivityByCategorires from "../pages/activity/ActivityByCategorires";
+import AllUser from "../pages/dashboard/alluser/AllUser";
 
 export const routeList = [
    
@@ -45,5 +46,9 @@ export const routeList = [
     {
         path: "/dashboard",
         element: <Dashboard />
+    },
+    {
+        path: "/dashboard/all-user",
+        element: <AllUser/>
     }
 ]
