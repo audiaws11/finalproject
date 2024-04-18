@@ -22,10 +22,6 @@ const Dashboard = () => {
     const [profilePictureUrl, setProfilePictureUrl] = useState('');
     const [profilePictureFile, setProfilePictureFile] = useState(null);
 
-   
-
-
-
     useEffect(() => {
         fetchLogin();
         fetchActivity();
@@ -122,6 +118,7 @@ const Dashboard = () => {
                 setProfilePictureUrl(newProfilePictureUrl);
                 updateUserProfile(newProfilePictureUrl);
                 
+                
             
                 
             })
@@ -148,6 +145,7 @@ const Dashboard = () => {
             setUser(response.data.data);
             setShowModal(false);
             window.location.reload();
+            console.log(response.data.data);
         })
         .catch(error => {
             console.error('Failed to update profile:', error);

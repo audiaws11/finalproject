@@ -8,6 +8,7 @@ import Activity from "../pages/activity/Activity";
 import DetailActivity from "../pages/activity/DetailActivity";
 import ActivityByCategorires from "../pages/activity/ActivityByCategorires";
 import AllUser from "../pages/dashboard/alluser/AllUser";
+import BannerEdit from "../pages/dashboard/bannerEdit/BannerEdit";
 
 export const routeList = [
    
@@ -50,5 +51,9 @@ export const routeList = [
     {
         path: "/dashboard/all-user",
         element: <AllUser/>
+    },
+    {
+        path: "/dashboard/banner",
+        element: <BannerEdit />
     }
 ]

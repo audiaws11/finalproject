@@ -27,11 +27,14 @@ const DetailActivity = () => {
     useEffect(() => {
         fetchDetailActivity();
     }, [id]);
+
+    const backgroundImageUrl = detailActivity.imageUrls && detailActivity.imageUrls.length > 1 ? detailActivity.imageUrls[1] : '';
+
     return (
         <div style={{ backgroundColor: '#f2ede4' }}>
             <Layout>
             {/* header  */}
-            <div className="detail-header-page row " style={{ backgroundImage: `url(${detailActivity.imageUrls})` }}>
+            <div className="detail-header-page row " style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
             <div className="col-6">
                 <h3 className="tagline-detail" >{detailActivity.title}</h3> 
                 <div className="breadcrumb-detail">

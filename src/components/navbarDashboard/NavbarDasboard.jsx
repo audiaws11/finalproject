@@ -20,15 +20,15 @@ const NavbarDashboard = () => {
             <div className="logo">
                 <img src="/image2vector.svg" alt="logo" style={{ width: '35px', height: '35px' }}/>Kaja
             </div>
-            <div className="sidebar-item">
+            <div className="sidebar-item" onClick={() => window.location.href = '/dashboard'}>
                <i className="bi bi-house-fill"></i>
-                <span onClick={() => window.location.href = '/dashboard'}>Home</span>
+                <span >Home</span>
             </div>
-            <div className="sidebar-item">
+            <div className="sidebar-item" onClick={() => window.location.href = '/dashboard/all-user'}>
                 <i className="bi bi-people-fill"></i>
-                <span onClick={() => window.location.href = '/dashboard/all-user'}>All Users</span>
+                <span >All Users</span>
             </div>
-            <div className="sidebar-item">
+            <div className="sidebar-item"  onClick={() => window.location.href = '/dashboard/banner'}>
                 <i className="bi bi-columns-gap"></i>
                 <span>Banner</span>
             </div>

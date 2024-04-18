@@ -46,14 +46,14 @@ const Activity = () => {
                     <p className="activity-title">{activities.length} activities available</p>
                     {activities.map((activity, index) => (
                         <div className="col-md-3" key={index}>
-                            <div className={`activity-card ${isZoomed ? 'zoom-in' : ''}`} 
+                            <div className={`activity-card ${isZoomed ? 'zoom in' : ''}`} 
                                 onClick={() => {
                                     setIsZoomed(true); 
                                     setTimeout(() => navigate(`/activity/${activity.id}`), 300); 
                                 }} 
                                 onMouseLeave={() => setIsZoomed(false)}  
-                                style={{ backgroundImage: `url(${activity.imageUrls})` }}>
-                            <img src={activity.imageUrls} className="activity-image" alt={activity.title} />
+                                style={{ backgroundImage: `url(${activity.imageUrls[1]})` }}>
+                            <img src={activity.imageUrls[1]} className="activity-image" alt={activity.title} />
                             <div className={`activity-info activity-info-color-${(index % colors.length) + 1}`}>
                                 
                                 <h5 className="activity-name">{activity.title}</h5>
