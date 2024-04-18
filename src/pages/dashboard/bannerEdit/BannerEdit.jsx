@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getBanners } from "../../../api/api";
+import { useNavigate } from 'react-router-dom';
 import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from "axios";
@@ -17,6 +18,7 @@ const BannerEdit = () => {
     const [bannerImageFile, setBannerImageFile] = useState(null);
     const [isEditing, setIsEditing] = useState(false); // State to check if editing or adding
     const [isDeleting, setIsDeleting] = useState(false); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchLogin();
@@ -174,6 +176,7 @@ const BannerEdit = () => {
                                                 <div className="col-md-4">
                                                     <button className="btn banner-button" onClick={() => handleEditBanner(banner)}>Edit Banner</button>
                                                     <button className="btn banner-button" onClick={() => handleConfirmDelete(banner)}>Delete Banner</button>
+                                                    <button className="btn banner-button" onClick={() => navigate(`/dashboard/banner/${banner.id}`)}>View Banner</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -199,6 +202,12 @@ const BannerEdit = () => {
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control type="text" name="name" value={selectedBanner.name} onChange={handleChange} />
                             </Form.Group>
+                           {isEditing && (
+                               <Form.Group controlId="formImageUrl">
+                                   <Form.Label>Image Url</Form.Label>
+                                   <Form.Control type="text" name="description" value={selectedBanner.imageUrl} disabled/>
+                               </Form.Group>
+                           )}
                             <Form.Group controlId="formImageFile">
                                 <Form.Label>New Image File</Form.Label>
                                 <Form.Control type="file" name="imageFile" onChange={handleFileChange} />

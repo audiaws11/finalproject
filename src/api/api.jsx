@@ -62,6 +62,12 @@ export const getActivitiesByCategory = (id) => {
   });
 }
 
+export const getBannerById = (id) => {
+  return axios.get(`${BASE_URL}/banner/${id}`, {
+    headers: { 'apiKey': API_KEY }
+  });
+}
+
 export const postImage = (payload) => {
   return axios.post(`${BASE_URL}/upload-image`, payload, {
     headers: {
