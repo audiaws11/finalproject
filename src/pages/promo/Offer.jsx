@@ -40,8 +40,8 @@ const Offer = () => {
                                 <div className="row" style={{ height: '100%' }}>
                                     <div className="col-6 text-left offer-header-section" > 
                                         <h1 data-aos="fade-right" data-aos-duration="700">
-                                            Mountain<br />
-                                            gateaway
+                                            Big Offer<br />
+                                            by Kaja
                                         </h1 >
                                         <p data-aos="fade-right" data-aos-duration="900">Discover possibilities of travelling!</p>
                                     </div>

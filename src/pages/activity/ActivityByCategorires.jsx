@@ -1,4 +1,4 @@
-import {  getCategoryById, getActivitiesByCategory } from "../../api/api";
+import {  getCategoryById, getActivitiesByCategory, getCategories } from "../../api/api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { useNavigate } from 'react-router-dom';
@@ -12,13 +12,25 @@ import './activity.css'
 
 
 const ActivityByCategorires = () => {
-
+    const [categories, setCategories] = useState([]);
     const [activitiesByCategory, setActivitiesByCategory] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('All');
     const [categoryById, setCategoryById] = useState([]);
     const [isZoomed, setIsZoomed] = useState(false);
     const { id } = useParams();
     const colors = ['#f2ede4', '#e2d6ba', '#e2d6ba', '#547255', '#547255', '#547255', '#d5d2cd', '#f37523'];
     const navigate = useNavigate();
+
+    const fetchCategories = () => {
+        getCategories()
+            .then(response => {
+                setCategories(response.data.data);
+            })
+            .catch(error => {
+                console.log('Error fetching categories:', error);
+            });
+    };
+
 
     const fetchCategoryById = () => {
         getCategoryById(id)
@@ -42,11 +54,27 @@ const ActivityByCategorires = () => {
             });
     };
 
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
+    };
+
+    const handleSearchClick = () => {
+
+        if (selectedCategory !== 'All') {
+            navigate(`/activities-by-category/${selectedCategory}`);
+        } else {
+            navigate(`/activity`);
+        }
+    };
     useEffect(() => {
         fetchActivitiesBYCategory();
         fetchCategoryById();
         AOS.init();
     }, [id]);
+
+    useEffect(() => {
+        fetchCategories();
+    })
     return (
         <Layout>   
         {/* header  */}
@@ -65,7 +93,19 @@ const ActivityByCategorires = () => {
         {/* content */}
         <div className="activity-content">
                     <div className="row activity-row">
-                    <p className="activity-title">{activitiesByCategory.length} activities available</p>
+                    <div className="row">
+                    <div className="col-6"><p className="activity-title">{activitiesByCategory.length} activities available</p></div>
+                    <div className="col-6">
+                        <select className="drop-down" value={selectedCategory} onChange={handleCategoryChange}>
+                            <option >All</option>
+                            {categories.map(category => (
+                                <option key={category.id} value={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                        <button className="btn btn-search" onClick={handleSearchClick}>Search</button>
+                    </div></div>
                     {activitiesByCategory.map((activity, index) => (
                         <div className="col-md-3" key={index}>
                             <div className={`activity-card ${isZoomed ? 'zoom-in' : ''}`} 
@@ -75,7 +115,7 @@ const ActivityByCategorires = () => {
                                 }} 
                                 onMouseLeave={() => setIsZoomed(false)}  
                                 style={{ backgroundImage: `url(${activity.imageUrls})` }}>
-                            <img src={activity.imageUrls} className="activity-image" alt={activity.title} />
+                            <img src={activity.imageUrls[1]} className="activity-image" alt={activity.title} />
                             <div className={`activity-info activity-info-color-${(index % colors.length) + 1}`}>
                                 
                                 <h5 className="activity-name">{activity.title}</h5>

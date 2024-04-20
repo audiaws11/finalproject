@@ -56,20 +56,27 @@
   }
 
 .banner-button {
-    border-color: white;
+    border-color: #547255;
+    background-color: #547255;
+    color: #fff;
+    border-style: solid;
     border-width: 1px;
     border-radius: 10px;
-    width: 90%;
-    font-size: 15px;
+    width: 25%;
+    font-size: 17px;
     font-weight: 400;
     margin-top: 5px;
-    padding: 2px;
-   
+    padding: 3px;
+    margin: 3px;
+    
+    justify-content: center;
+    
 }
 
+
 .banner-button:hover {
-    background-color: #f37523;
-    color: white;
+    background-color: #fff;
+    color: #547255;
 }
 
 .banner-description {

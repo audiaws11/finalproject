@@ -1,9 +1,19 @@
 .offer-detail {
     height:0vh max-content;
-    background-color: #f2ede4;
+    background-color: #e2d6ba;
     font-family: "Wix Madefor Text", sans-serif;
     padding-bottom: 20px;
 }
+
+.header1 {
+   
+  background-color: #F2EDE4;
+  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.9);
+  padding-top: 20px;
+  font-family: "Wix Madefor Text", sans-serif;
+}
+
+.dash
 
 .offer1-detail {
     padding-top: 20px;

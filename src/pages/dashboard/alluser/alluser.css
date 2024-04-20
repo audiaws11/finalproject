@@ -1,4 +1,7 @@
 
+.banner-detail{
+  margin-left: 150px;
+}
 .alluser-title {
     font-family: "Wix Madefor Text", sans-serif;
     align-items: start;
@@ -35,9 +38,10 @@
 
 .alluser-button {
     border-color: white;
-    border-width: 1px;
+    color: #333;
+    border-width: 2px;
     border-radius: 10px;
-    font-weight: 400;
+    font-weight: 700;
     margin-top: 5px;
     margin-left: 65px;
 }

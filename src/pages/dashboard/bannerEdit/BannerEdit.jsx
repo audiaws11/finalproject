@@ -174,9 +174,9 @@ const BannerEdit = () => {
                                                     <p className="banner-description">Updated : {banner.updatedAt.slice(0, 10)} <i className="bi bi-alarm"></i> {banner.updatedAt.slice(11, 19)}</p>
                                                 </div>
                                                 <div className="col-md-4">
-                                                    <button className="btn banner-button" onClick={() => handleEditBanner(banner)}>Edit Banner</button>
-                                                    <button className="btn banner-button" onClick={() => handleConfirmDelete(banner)}>Delete Banner</button>
-                                                    <button className="btn banner-button" onClick={() => navigate(`/dashboard/banner/${banner.id}`)}>View Banner</button>
+                                                    <button className="btn banner-button" onClick={() => handleEditBanner(banner)}><i className="bi bi-pencil-square" ></i></button>
+                                                    <button className="btn banner-button" onClick={() => handleConfirmDelete(banner)}><i className="bi bi-trash-fill"></i></button>
+                                                    <button className="btn banner-button" onClick={() => navigate(`/dashboard/banner/${banner.id}`)}><i className="bi bi-journal-text"></i></button>
                                                 </div>
                                             </div>
                                         </div>
