@@ -32,9 +32,9 @@ const NavbarDashboard = () => {
                 <i className="bi bi-columns-gap"></i>
                 <span>Banner</span>
             </div>
-            <div className="sidebar-item">
+            <div className="sidebar-item"onClick={() => window.location.href = '/dashboard/offer'}>
                 <i className="bi bi-percent"></i>
-                <span>Promo</span>
+                <span>Offer</span>
             </div>
             <div className="sidebar-item">
                 <i className="bi bi-bookmarks-fill"></i>
@@ -45,13 +45,10 @@ const NavbarDashboard = () => {
                 <span>Activity</span>
             </div>
             <div className="navbottom" style={{ marginTop: 'auto' }}>
-                <i className="bi bi-gear-fill"></i>
-                <span>Setting</span>
-            </div>
-            <div className="navbottom">
                 <i className="bi bi-box-arrow-left"></i>
                 <span onClick={handleLogout} >Logout</span>
             </div>
+           
         </div>
     
   );

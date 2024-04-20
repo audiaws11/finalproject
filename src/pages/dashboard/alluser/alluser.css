@@ -46,6 +46,11 @@
     margin-left: 65px;
 }
 
+.alluser-button:hover {
+    background-color: #f37523;
+    color: white;
+}
+
 .alluser-description {
     font-size: 14px;
     text-align: center;

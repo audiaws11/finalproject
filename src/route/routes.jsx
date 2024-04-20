@@ -10,6 +10,8 @@ import ActivityByCategorires from "../pages/activity/ActivityByCategorires";
 import AllUser from "../pages/dashboard/alluser/AllUser";
 import BannerEdit from "../pages/dashboard/bannerEdit/BannerEdit";
 import BannerDetail from "../pages/dashboard/bannerEdit/BannerDetail";
+import PromoEdit from "../pages/dashboard/promoEdit/PromoEdit";
+import PromoDetailEdit from "../pages/dashboard/promoEdit/PromoDetailEdit";
 
 export const routeList = [
    
@@ -32,6 +34,10 @@ export const routeList = [
     {
         path: "/offer/:id",
         element: <DetailOffer />
+    },
+    {
+        path: "/dashboard/offer/:id",
+        element: <PromoDetailEdit />
     },
     {
         path: "/activity",
@@ -60,5 +66,8 @@ export const routeList = [
     { 
         path: "/dashboard/banner/:id",
         element: <BannerDetail />
-    }
+    },
+    {
+        path: "/dashboard/offer",
+        element: <PromoEdit />}
 ]
