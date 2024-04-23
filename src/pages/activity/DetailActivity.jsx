@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getActivityById } from "../../api/api";
+import { Modal, Button } from "react-bootstrap";
 import Layout from "../../components/layout/Layout";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,6 +10,8 @@ import './detailactivity.css';
 
 const DetailActivity = () => {
     const [detailActivity, setDetailActivity] = useState({});
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const { id } = useParams();
     console.log(`Fetching details for activity ID: ${id}`); // For debugging
 
@@ -23,19 +26,34 @@ const DetailActivity = () => {
                 console.log(err);
             })
     }
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+
 
     useEffect(() => {
         fetchDetailActivity();
     }, [id]);
 
-    const backgroundImageUrl = detailActivity.imageUrls && detailActivity.imageUrls.length > 1 ? detailActivity.imageUrls[1] : '';
+    const handleModalClose = () => setIsModalOpen(false);
+    const handleModalShow = () => setIsModalOpen(true);
+    const backgroundImageUrl = detailActivity.imageUrls;
 
     return (
         <div style={{ backgroundColor: '#f2ede4' }}>
             <Layout>
             {/* header  */}
             <div className="detail-header-page row " style={{ backgroundImage: `url(${backgroundImageUrl})` }}>
-            <div className="col-6">
+            <div className="col">
                 <h3 className="tagline-detail" >{detailActivity.title}</h3> 
                 <div className="breadcrumb-detail">
                 <Breadcrumb>
@@ -71,22 +89,44 @@ const DetailActivity = () => {
                     <h3>Faciilities:</h3>
                     <p>{detailActivity.facilities}</p>
                 </div>
-                <div className="tour-location">
-                    <h3>Location:</h3>
-                    <p>{detailActivity.address}</p>
-                    <div className="location-bar">
-                        <div className="location-info">
-                             <p><i className="bi bi-geo-alt"></i> {detailActivity.city}, {detailActivity.province}</p>
-                        </div>
-                        <div
-                            className="google-map"
-                            dangerouslySetInnerHTML={{ __html: detailActivity.location_maps }}
-                        />
-                        </div>
-                </div>
-
-
             
+                    <div className="tour-location">
+                        <h3>Location:</h3>
+                        <p>{detailActivity.address}</p>
+                        <div className="location-bar">
+                            <div className="location-info">
+                                <p><i className="bi bi-geo-alt"></i> {detailActivity.city}, {detailActivity.province}</p>
+                            </div>
+                            {windowWidth <= 768 ? (
+                                <>
+                                    <Button className="btn-map" variant="secondary" onClick={handleModalShow}>View Map</Button>
+                                    <Modal show={isModalOpen} onHide={handleModalClose} centered>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Map Location</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <div
+                                                className="google-map"
+                                                dangerouslySetInnerHTML={{ __html: detailActivity.location_maps }}
+                                            />
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="secondary" onClick={handleModalClose}>
+                                                Close
+                                            </Button>
+                                        </Modal.Footer>
+                                    </Modal>
+                                </>
+                            ) : (
+                                <div
+                                    className="google-map"
+                                    dangerouslySetInnerHTML={{ __html: detailActivity.location_maps }}
+                                />
+                            )}
+                        </div>
+                    </div>
+                
+                    
                
                 </div>
 

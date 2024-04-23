@@ -79,11 +79,12 @@ const ActivityByCategorires = () => {
         <Layout>   
         {/* header  */}
             <div className="activity-header-page row " style={{backgroundImage: `url(${categoryById.imageUrl})`}}>
-            <div className="col-6">
-                <h3 className="tagline-activity" >Travel to {categoryById.name}<br/><span style={{fontSize: '20px', fontWeight: 'normal'}}>Let's create unforgettable memories together by traveling to exciting destinations!</span></h3> 
+            <div className="col">
+                <h3 className="tagline-activity" >Travel to {categoryById.name}<br/><span className="tagline-detail-activity" style={{fontWeight: 'normal'}}>Let's create unforgettable memories together by traveling to exciting destinations!</span></h3> 
                 <div className="breadcrumb-detail">
                 <Breadcrumb>
-                    <Breadcrumb.Item href="/" >Home</Breadcrumb.Item>  
+                    <Breadcrumb.Item href="/" >Home</Breadcrumb.Item>
+                    <Breadcrumb.Item href="/activity" >Activity</Breadcrumb.Item>
                     <Breadcrumb.Item active >Travel to {categoryById.name}</Breadcrumb.Item>
                 </Breadcrumb>
                 </div>
@@ -115,7 +116,7 @@ const ActivityByCategorires = () => {
                                 }} 
                                 onMouseLeave={() => setIsZoomed(false)}  
                                 style={{ backgroundImage: `url(${activity.imageUrls})` }}>
-                            <img src={activity.imageUrls[1]} className="activity-image" alt={activity.title} />
+                            <img src={activity.imageUrls} className="activity-image" alt={activity.title} />
                             <div className={`activity-info activity-info-color-${(index % colors.length) + 1}`}>
                                 
                                 <h5 className="activity-name">{activity.title}</h5>

@@ -86,8 +86,8 @@ const Activity = () => {
                                     setTimeout(() => navigate(`/activity/${activity.id}`), 300); 
                                 }} 
                                 onMouseLeave={() => setIsZoomed(false)}
-                                style={{ backgroundImage: `url(${activity.imageUrls[1]})` }}>
-                                <img src={activity.imageUrls[1]} className="activity-image" alt={activity.title} />
+                                style={{ backgroundImage: `url(${activity.imageUrls})` }}>
+                                <img src={activity.imageUrls} className="activity-image" alt={activity.title} />
                                 <div className={`activity-info activity-info-color-${(index % colors.length) + 1}`}>
                                     <h5 className="activity-name">{activity.title}</h5>
                                     <p className="activity-location"><i className="bi bi-geo-alt"></i> {activity.city}, {activity.province}</p>

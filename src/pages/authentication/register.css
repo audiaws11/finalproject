@@ -76,6 +76,7 @@
     height: 60vh;
     padding-top: 35px;
     padding-left: 20px;
+    padding-right: 20px;
     
   }
   
@@ -122,7 +123,7 @@
   
   
   .form-control {
-    border-radius: 8px; 
+    border-radius: 30px; 
     border: 1px solid #ced4da; 
     width: 92%;
     height: 28px;
@@ -137,6 +138,7 @@
     height: 28px;
     font-size: 10px;
     padding-left: 10px;
+    margin-left: 20px;
     
   }
   
@@ -187,6 +189,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
   }
+  
 
   .form-check-label{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -219,7 +222,7 @@
     padding: 20px; 
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    width: 45%;
+    width: 50%;
   }
   .rightColumn {
     height: auto; 
@@ -227,6 +230,7 @@
     padding: 20px; 
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    width: 50%;
     
    
     
@@ -288,7 +292,8 @@
     padding: 20px; 
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    width: 66%;
+    font-size: 15px;
+    width: 50%;
   }
   .rightColumn {
     height: auto; 
@@ -310,7 +315,6 @@
     width: 92%;
     height: 20px;
     font-size: 10px;
-    
   }
 
   .form-control1 {

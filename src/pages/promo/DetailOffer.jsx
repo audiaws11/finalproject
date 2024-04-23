@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './detailOffer.css';
 
-
 const DetailOffer = () => {
     const [detailOffer, setDetailOffer] = useState({});
     const { id } = useParams();

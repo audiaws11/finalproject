@@ -12,6 +12,10 @@ import BannerEdit from "../pages/dashboard/bannerEdit/BannerEdit";
 import BannerDetail from "../pages/dashboard/bannerEdit/BannerDetail";
 import PromoEdit from "../pages/dashboard/promoEdit/PromoEdit";
 import PromoDetailEdit from "../pages/dashboard/promoEdit/PromoDetailEdit";
+import CategoryEdit from "../pages/dashboard/category/CategoryEdit";
+import CategoryDetailEdit from "../pages/dashboard/category/CategoryDetailEdit";
+import ActivityEdit from "../pages/dashboard/activity/ActivityEdit";
+import ActivityDetailEdit from "../pages/dashboard/activity/ActivityDetailEdit";
 
 export const routeList = [
    
@@ -34,10 +38,6 @@ export const routeList = [
     {
         path: "/offer/:id",
         element: <DetailOffer />
-    },
-    {
-        path: "/dashboard/offer/:id",
-        element: <PromoDetailEdit />
     },
     {
         path: "/activity",
@@ -69,5 +69,27 @@ export const routeList = [
     },
     {
         path: "/dashboard/offer",
-        element: <PromoEdit />}
+        element: <PromoEdit />
+    },
+    {
+        path: "/dashboard/offer/:id",
+        element: <PromoDetailEdit />
+    },
+    {
+        path: "/dashboard/category",
+        element: <CategoryEdit />
+    },
+    {
+        path: "/dashboard/category/:id",
+        element: <CategoryDetailEdit />
+    },
+    { 
+        path: "/dashboard/activity",
+        element: <ActivityEdit/>
+    },
+    {
+        path: "/dashboard/activity/:id",
+        element: <ActivityDetailEdit/>
+    },
+
 ]

@@ -95,10 +95,10 @@ const AllUser = () => {
 
             axios.post(API_URL, data, { headers })
             .then(response => {
-                // Handle success if needed
+                
                 console.log('Role updated successfully');
                 setShowModal(false);
-                window.location.reload(); // Refresh the page or update the user list
+                window.location.reload(); 
             })
             .catch(error => {
                 console.error('Failed to update role:', error);
@@ -176,7 +176,7 @@ const AllUser = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <div className="col">
+                        <div className="col admin">
                                     <label htmlFor="roleSelect" className="form-label">Select Role</label>
                                     <select
                                     className="form-control2"

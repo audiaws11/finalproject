@@ -49,7 +49,7 @@ const PromoEdit= () => {
     const fetchPromo = () => {
         getPromos()
             .then(response => setPromo(response.data.data))
-            .catch(error => setError('Failed to fetch banners. Please try again later.'));
+            .catch(error => setError('Failed to fetch promos. Please try again later.'));
     };
 
     const handleEditPromo = (promo) => {
@@ -81,7 +81,7 @@ const PromoEdit= () => {
         setShowModal(true);
     };
 
-    const handleDeleteBanner = () => {
+    const handleDeletePromo = () => {
         const API_URL = `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/delete-promo/${selectedPromo.id}`;
         const headers = {
             'Authorization': `Bearer ${localStorage.getItem("token")}`,
@@ -107,7 +107,7 @@ const PromoEdit= () => {
         setSelectedPromo(prev => ({ ...prev, [name]: value, minimum_claim_price: Number(value)}));
     };
     const handleChangePromo = (e) => {
-        const { name, value} = e.target;
+        const { value} = e.target;
         setSelectedPromo(prev => ({ ...prev, promo_discount_price: Number(value)}));
     };
 
@@ -218,7 +218,7 @@ const PromoEdit= () => {
                 </Modal.Header>
                 <Modal.Body>
                     {isDeleting ? (
-                        <p>Are you sure you want to delete this promo: {selectedPromo.name}?</p>
+                        <p>Are you sure you want to delete this promo: {selectedPromo.title}?</p>
                     ) : (
                         <Form>
                             <Form.Group controlId="formName">
@@ -262,7 +262,7 @@ const PromoEdit= () => {
                 <Modal.Footer>
                     <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
                     {isDeleting ? (
-                        <Button variant="danger" onClick={handleDeleteBanner}>Delete</Button>
+                        <Button variant="danger" onClick={handleDeletePromo}>Delete</Button>
                     ) : (
                         <Button variant="primary" onClick={handleSaveChanges}>{isEditing ? 'Save Changes' : 'Create Promo'}</Button>
                     )}

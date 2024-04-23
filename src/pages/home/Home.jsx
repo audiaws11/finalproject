@@ -77,22 +77,6 @@ const Home = () => {
                                 </div>
                             </div>
                         </Carousel.Item>
-                        <Carousel.Item>
-                            <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapercave.com/wp/wp3103579.jpg)', height: '500px' }}>
-                                <div className="row" style={{ height: '100%' }}>
-                                    <div className="col-6 text-left header-section">
-                                        <h1 >
-                                            Explore<br />
-                                            <span style={{ color: '#f37523' }}>the world</span><br /> with us
-                                        </h1>
-                                        <p >Discover possibilities of travelling!</p>
-                                        <LinkContainer to="/activity">
-                                        <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
-                                        </LinkContainer>
-                                    </div>
-                                </div>
-                            </div>
-                        </Carousel.Item>
                         {banners.map((banner, index) => (
                             <Carousel.Item key={index}> {/* Ensure you have a unique key for each item */}
                                 <div className="container travel-layout" style={{ backgroundImage: `url(${banner.imageUrl})`, height: '500px' }}>
