@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import { Modal, Button, Form } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { setShowModal, hideModal } from '../../../pages/dashboard/alluser/modalSlice';
 import axios from "axios";
 import LayoutDashboard from "../../../components/layout/LayoutDashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,10 +12,10 @@ import './alluser.css';
 
 const AllUser = () => {
     const [user, setUser] = useState({});
+    const dispatch = useDispatch();
+    const { showModal, selectedUserId } = useSelector((state) => state.modal);
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
-    const [showModal, setShowModal] = useState(false);
-    const [selectedUserId, setSelectedUserId] = useState(null); 
     const [formData, setFormData] = useState({
          role: 'admin',
         
@@ -22,21 +24,25 @@ const AllUser = () => {
     const [usersPerPage] = useState(52);
     const colors = ['#f2ede4', '#e2d6ba', '#e2d6ba', '#547255', '#547255', '#547255', '#d5d2cd', '#f37523'];
    
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-
     useEffect(() => {
         fetchLogin();
         fetchAllUser();
        
     }, []);
 
-   
+    const handleEditRole = (userId) => {
+        dispatch(setShowModal({ showModal: true, selectedUserId: userId }));
+    };
+
+    const handleCloseModal = () => {
+        dispatch(hideModal());
+    };
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
 
     const fetchLogin = () => {
         const token = localStorage.getItem("token");
@@ -74,13 +80,7 @@ const AllUser = () => {
             });
     };
 
-   
 
-
-    const handleEditRole = (userId) => {
-        setSelectedUserId(userId); 
-        setShowModal(true);
-    };
 
     const handleSaveChanges = () => {
         const { role } = formData;
@@ -170,7 +170,7 @@ const AllUser = () => {
 
 
             {/* modal */}
-            <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Edit Role</Modal.Title>
                 </Modal.Header>
@@ -193,7 +193,7 @@ const AllUser = () => {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowModal(false)} style={{ fontSize: '10px'}}>Close</Button>
+                    <Button variant="secondary" onClick={handleCloseModal} style={{ fontSize: '10px'}}>Close</Button>
                     <Button variant="primary" onClick={handleSaveChanges}>Save Changes</Button>
                 </Modal.Footer>
             </Modal>

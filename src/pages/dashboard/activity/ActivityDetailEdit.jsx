@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getActivityById } from "../../../api/api";
+import { Modal, Button } from "react-bootstrap";
 import NavbarDashboard from "../../../components/navbarDashboard/NavbarDasboard";
 import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
@@ -11,8 +12,10 @@ import './activityedit.css';
 
 const ActivityDetailEdit = () => {
     const [user, setUser] = useState({});
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [activityDetailEdit, setActivityDetailEdit] = useState({});
-    const [error, setError] = useState(null);
+    
     const { id } = useParams();
     console.log(`Fetching details for Activity ID: ${id}`); 
 
@@ -49,10 +52,21 @@ const ActivityDetailEdit = () => {
     }, []);
     
 
-    // Helper function to safely access and format date strings
     const formatDate = (dateStr) => {
         return dateStr ? new Date(dateStr).toLocaleDateString() + ' (' + new Date(dateStr).toLocaleTimeString() + ')' : '';
     };
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    const handleModalClose = () => setIsModalOpen(false);
+    const handleModalShow = () => setIsModalOpen(true);
 
     return (
         
@@ -63,10 +77,6 @@ const ActivityDetailEdit = () => {
             <h2>{user.name || "Guest"} ({user.email})<img src={user.profilePictureUrl} alt="Profile" /></h2>
         </div>
         </header>
-            
-           
-               
-            
                <div className='banner-detail'>
                <div className="container-fluid offer-detail detail" >
                     <div className="container-fluid offer1-detail" data-aos="" data-aos-duration="500">
@@ -109,18 +119,42 @@ const ActivityDetailEdit = () => {
                         <p>Updated: {formatDate(activityDetailEdit.updatedAt)}</p>
                     </div>
                     <div className="tour-location">
-                    <h3>Location:</h3>
-                    <p>{activityDetailEdit.address}</p>
-                    <div className="location-bar">
-                        <div className="location-info">
-                             <p><i className="bi bi-geo-alt"></i> {activityDetailEdit.city}, {activityDetailEdit.province}</p>
+                        <h3>Location:</h3>
+                        <p>{activityDetailEdit.address}</p>
+                        <div className="location-bar">
+                            <div className="location-info">
+                                <p><i className="bi bi-geo-alt"></i> {activityDetailEdit.city}, {activityDetailEdit.province}</p>
+                            </div>
+                            {windowWidth <= 768 ? (
+                                <>
+                                    <Button className="btn-map" variant="secondary" onClick={handleModalShow}>View Map</Button>
+                                    <Modal show={isModalOpen} onHide={handleModalClose} centered>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Map Location</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            <div
+                                                className="google-map"
+                                                dangerouslySetInnerHTML={{ __html: activityDetailEdit.location_maps }}
+                                            />
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="secondary" onClick={handleModalClose}>
+                                                Close
+                                            </Button>
+                                        </Modal.Footer>
+                                    </Modal>
+                                </>
+                            ) : (
+                                <div
+                                    className="google-map"
+                                    dangerouslySetInnerHTML={{ __html: activityDetailEdit.location_maps }}
+                                />
+                            )}
                         </div>
-                        <div
-                            className="google-map"
-                            dangerouslySetInnerHTML={{ __html: activityDetailEdit.location_maps }}
-                        />
-                        </div>
-                </div>
+                    </div>
+                
+                
                 </div>
                </div>
 

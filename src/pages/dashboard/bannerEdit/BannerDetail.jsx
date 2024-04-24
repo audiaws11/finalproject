@@ -15,6 +15,14 @@ const BannerDetail = () => {
     const { id } = useParams();
     console.log(`Fetching details for banner ID: ${id}`); // For debugging
 
+    useEffect(() => {
+        fetchBannerId();
+    }, [id]);
+
+    useEffect(() => {
+        fetchLogin();
+    }, []);
+    
     const fetchLogin = () => {
         const token = localStorage.getItem("token");
         const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
@@ -39,13 +47,6 @@ const BannerDetail = () => {
             });
     };
 
-    useEffect(() => {
-        fetchBannerId();
-    }, [id]);
-
-    useEffect(() => {
-        fetchLogin();
-    }, []);
     
 
     // Helper function to safely access and format date strings

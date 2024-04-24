@@ -98,7 +98,7 @@ export const getUser = async (token) => {
   return response.data;
 };
 
-export const updateUserProfile = async (data, token) => {
+export const updateProfile = async (data, token) => {
  
   const response = await axios.post(`${BASE_URL}/update-profile`, data, { 
       headers: {
@@ -142,4 +142,32 @@ export const getAllProfile = async () => {
       }
    });
   return response.data;
+};
+export const fetchUser = async (token) => {
+  const headers = {
+      'Authorization': `Bearer ${token}`,
+      'apiKey': API_KEY,
+      'Content-Type': 'application/json'
+  };
+  return axios.get(`${BASE_URL}/user`, { headers });
+};
+
+export const uploadProfilePicture = async (file, token) => {
+  const formData = new FormData();
+  formData.append('image', file);
+  const headers = {
+      'Content-Type': 'multipart/form-data',
+      'apiKey': API_KEY,
+      'Authorization': `Bearer ${token}`
+  };
+  return axios.post(`${BASE_URL}/upload-image`, formData, { headers });
+};
+
+export const updateUserProfile = async (userInfo, token) => {
+  const headers = {
+      'Authorization': `Bearer ${token}`,
+      'apiKey': API_KEY,
+      'Content-Type': 'application/json'
+  };
+  return axios.post(`${BASE_URL}/update-profile`, userInfo, { headers });
 };

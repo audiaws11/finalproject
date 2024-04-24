@@ -1,13 +1,10 @@
 // store.js
+import { configureStore } from '@reduxjs/toolkit';
+import modalReducer from './pages/dashboard/alluser/modalSlice';
 
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
-import modalReducer from './components/modal/modalReducer';
-
-const rootReducer = combineReducers({
-    modal: modalReducer
+export const store = configureStore({
+    reducer: {
+        modal: modalReducer,
+    },
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-export default store;

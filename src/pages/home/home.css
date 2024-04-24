@@ -173,43 +173,41 @@
     text-align: center;
   }
 
-  .promo1 {
+  .offer-home {
     display: flex;
     flex-direction: column;
     max-width: 80%;
     margin-top: 50px;
     margin-bottom: 50px;
-
-
     background: #e2d6ba;
     border-radius: 20px;
     padding: 50px;
     overflow: hidden;
     font-family: 'Arial', sans-serif;
   }
-  .header {
+  .offer-header {
     padding: 20px;
     margin-top: 80px;
+    
     background: #e2d6ba;
+    color: #000;
   }
   
-  .header h1 {
+  .offer-title-1 {
     font-size: 2.5em;
-    margin: 0;
+    margin: 8;
     font-family: "Wix Madefor Text", sans-serif;
     font-weight: 900;
   }
   
-  .pricing {
-    margin-top: 10px;
-  }
   
-  .pricing .price {
+  .pricing-1 .price-1 {
     color: #f37523;
-    font-weight: bold;
+    font-weight: 900;
+    font-size: 24px
   }
   
-  .explore-button {
+  .explore-button-1 {
     background-color: #f37523;
     color: white;
     border: none;
@@ -222,10 +220,10 @@
     margin-top: 15px;
   }
   
-  .explore-button:hover {
+  .explore-button-1:hover {
     background-color: #507356
   }
-  .images-wrapper {
+  .images-wrapper-1 {
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -234,14 +232,14 @@
     position: relative;
 }
 
-.images {
+.images-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
    
 }
 
-.images .landscape1{
+.images-1 .landscape1{
     width: 65%;
     height: 190px;
     object-fit: cover;
@@ -250,7 +248,7 @@
     border-radius: 15px;
 }
 
-.images .landscape2{
+.images-1 .landscape2{
     width:40%;
     height: 400px;
     object-fit: cover;
@@ -259,7 +257,7 @@
     border-radius: 15px;
     
 }
-.images .coastline {
+.images-1 .coastline {
     width: 65%;
     height: 200px;
     object-fit: cover;
@@ -291,7 +289,7 @@
 }
 
 /* Ensure no space between images */
-.images img {
+.images-1 img {
     vertical-align: bottom;
 }
 
@@ -356,7 +354,7 @@
     margin-right: 5px;
 }
 
-.promo1 {
+.offer-home {
     display: flex;
     flex-direction: column;
     max-width: 80%;
@@ -370,29 +368,30 @@
     overflow: hidden;
     font-family: 'Arial', sans-serif;
   }
-  .header {
+  .offer-header {
     padding: 20px;
     margin-top: 80px;
     background: #e2d6ba;
   }
   
-  .header h1 {
+  .offer-title-1 {
     font-size: 2.5em;
     margin: 0;
     font-family: "Wix Madefor Text", sans-serif;
     font-weight: 900;
   }
   
-  .pricing {
+  .pricing-1 {
     margin-top: 10px;
   }
   
-  .pricing .price {
+  .pricing-1 .price-1 {
     color: #f37523;
     font-weight: bold;
+    font-size: medium;
   }
   
-  .explore-button {
+  .explore-button-1 {
     background-color: #f37523;
     color: white;
     border: none;
@@ -405,10 +404,10 @@
     margin-top: 15px;
   }
   
-  .explore-button:hover {
+  .explore-button-1:hover {
     background-color: #507356
   }
-  .images-wrapper {
+  .images-wrapper-1 {
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -417,14 +416,14 @@
     position: relative;
 }
 
-.images {
+.images-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
    
 }
 
-.images .landscape1{
+.images-1 .landscape1{
     width: 65%;
     height: 190px;
     object-fit: cover;
@@ -433,7 +432,7 @@
     border-radius: 15px;
 }
 
-.images .landscape2{
+.images-1 .landscape2{
     width:40%;
     height: 400px;
     object-fit: cover;
@@ -442,7 +441,7 @@
     border-radius: 15px;
     
 }
-.images .coastline {
+.images-1 .coastline {
     width: 65%;
     height: 200px;
     object-fit: cover;
@@ -474,7 +473,7 @@
 }
 
 /* Ensure no space between images */
-.images img {
+.images-1 img {
     vertical-align: bottom;
 }
 
@@ -542,43 +541,41 @@
     margin-right: 5px;
 }
 
-.promo1 {
+.offer-home {
     display: flex;
     flex-direction: column;
     max-width: 90%;
     margin-top: 50px;
     margin-bottom: 50px;
-
-
     background: #e2d6ba;
     border-radius: 20px;
     padding: 15px;
     overflow: hidden;
     font-family: 'Arial', sans-serif;
   }
-  .header {
+  .offer-header {
     padding: 10px;
     margin-top: 60px;
     background: #e2d6ba;
   }
   
-  .header h1 {
+  .offer-title-1{
     font-size: 2em;
     margin: 0;
     font-family: "Wix Madefor Text", sans-serif;
     font-weight: 900;
   }
   
-  .pricing {
+  .pricing-1 {
     margin-top: 10px;
   }
   
-  .pricing .price {
+  .pricing-1 .price-1 {
     color: #f37523;
     font-weight: bold;
   }
   
-  .explore-button {
+  .explore-button-1 {
     background-color: #f37523;
     color: white;
     border: none;
@@ -591,10 +588,10 @@
     margin-top: 15px;
   }
   
-  .explore-button:hover {
+  .explore-button-1:hover {
     background-color: #507356
   }
-  .images-wrapper {
+  .images-wrapper-1 {
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -603,14 +600,14 @@
     position: relative;
 }
 
-.images {
+.images-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
    
 }
 
-.images .landscape1{
+.images-1 .landscape1{
     width: 0%;
     height: 190px;
     object-fit: cover;
@@ -619,7 +616,7 @@
     border-radius: 15px;
 }
 
-.images .landscape2{
+.images-1 .landscape2{
     width:100%;
     height: 400px;
     object-fit: cover;
@@ -628,7 +625,7 @@
     border-radius: 40px;
     
 }
-.images .coastline {
+.images-1 .coastline {
     width: 0%;
     height: 200px;
     object-fit: cover;
@@ -659,7 +656,7 @@
     border-bottom-right-radius: 30px;
 }
 
-.images img {
+.images-1 img {
     vertical-align: bottom;
 }
 

@@ -41,21 +41,6 @@ const ActivityEdit= () => {
         fetchActivity();
         fetchCategories();
     }, []);
-
-    const fetchLogin = () => {
-        const token = localStorage.getItem("token");
-        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
-        const headers = {
-            'Authorization': `Bearer ${token}`,
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-            'Content-Type': 'application/json'
-        };
-
-        axios.get(API_URL, { headers })
-            .then(res => setUser(res.data.data))
-            .catch(err => setError('Failed to fetch user data. Please try again later.'));
-    };
-
     const fetchActivity = () => {
         getActivities()
             .then(response => setActivity(response.data.data))
@@ -72,6 +57,21 @@ const ActivityEdit= () => {
             });
     };
 
+    const fetchLogin = () => {
+        const token = localStorage.getItem("token");
+        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
+        const headers = {
+            'Authorization': `Bearer ${token}`,
+            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
+            'Content-Type': 'application/json'
+        };
+
+        axios.get(API_URL, { headers })
+            .then(res => setUser(res.data.data))
+            .catch(err => setError('Failed to fetch user data. Please try again later.'));
+    };
+
+   
 
     const handleEditActivity = (activity) => {
         setSelectedActivity(activity);
@@ -161,8 +161,6 @@ const ActivityEdit= () => {
         setSelectedActivity(prev => ({ ...prev, total_reviews: Number(value)}));
     };
 
-
-   
     const handleFileChange = (e) => {
         setActivityImageFile(e.target.files[0]);  
     };

@@ -15,45 +15,31 @@ const Home = () => {
     const [promos, setPromos] = useState([]);
     const navigate = useNavigate();
 
-    const fetchBanner = () => {
-        getBanners()
-            .then((response) => {
-                setBanners(response.data.data);
-                console.log('banner', response.data.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    const fetchCategories = () => {
-        getCategories()
-            .then((response) => {
-                setCategories(response.data.data);
-                console.log('category', response.data.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    const fetchPromo = () => {
-        getPromos()
-            .then((response) => {
-                setPromos(response.data.data);
-                console.log('promo', response.data.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
     useEffect(() => {
-        fetchBanner();
-        fetchCategories();
-        fetchPromo();
-        AOS.init();
+        const fetchData = async () => {
+            try {
+                const bannersResponse = await getBanners();
+                setBanners(bannersResponse.data.data);
+                console.log('banner', bannersResponse.data.data);
+    
+                const categoriesResponse = await getCategories();
+                setCategories(categoriesResponse.data.data);
+                console.log('category', categoriesResponse.data.data);
+    
+                const promosResponse = await getPromos();
+                setPromos(promosResponse.data.data);
+                console.log('promo', promosResponse.data.data);
+            } catch (error) {
+                console.log(error);
+            }
+            AOS.init();
+        };
+    
+        fetchData();
+    
+      
     }, []);
+    
 
     return (
         <Layout>
@@ -114,7 +100,7 @@ const Home = () => {
                         </Carousel>
                     </div>
                 
-                {/* Search Bar */}
+                {/* Search Bar
                 <div className="bar-search d-flex justify-content-center my-4" style={{ backgroundColor: '#f2ede4' }}>
                 <div className="search-bar p-3 rounded-4 d-flex align-items-center" style={{ maxWidth: '1500px' }}>
                 <div className="input-group">
@@ -143,12 +129,12 @@ const Home = () => {
 
                 <button className="btn btn-success rounded-pill px-4 ms-3">Search</button>
             </div>
-            </div>
+            </div> */}
 
             
                             
            {/* Category */}
-           <h2 className="category-header"> Travel categories</h2>
+           <h2 className="category-header" > Travel categories</h2>
                 <div className="category-container">
                 {categories.length > 0 ? (
                     categories.map((category, index) => (
@@ -167,25 +153,26 @@ const Home = () => {
                 </div>
 
             {/* Promo */}
-            <div className="promo1 container">
+            <div className="offer-home container" >
+            
                     {promos.length > 0 ? (
                          <div className="row">
-                         <div className="header col-6" data-aos="fade-up" >
-                             <h1>{promos[0].title}</h1>
-                             <div className="pricing">
+                         <div className="offer-header col-6">
+                             <h1 className="offer-title-1">{promos[0].title}</h1>
+                             <div className="pricing-1">
                              <p>{promos[0].description}</p>
-                             <p >from <span className="price">Rp. {promos[0].promo_discount_price} </span>/ person</p>
+                             <p >from <span className="price-1">Rp. {promos[0].promo_discount_price} </span>/ person</p>
                              </div>
-                            <LinkContainer to="/offer"><button className="explore-button">Explore Offer</button></LinkContainer>
+                            <LinkContainer to="/offer"><button className="explore-button-1">Explore Offer</button></LinkContainer>
                          </div>
-                         <div className="images-wrapper col-6">
-                         <div className="images row">
+                         <div className="images-wrapper-1 col-6">
+                         <div className="images-1 row">
                              <div className="col-6">
-                             <img src="https://elenpradera.com/wp-content/uploads/2018/12/DSC05684_LR_Blog.jpg" alt="imagePromo1" className="landscape1" data-aos="zoom-in"/>
-                             <img src="https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/revision-2019/all-revision-destination/bromo22.jpg" alt="imagePromo2" className="coastline" data-aos="zoom-in"/>
+                             <img src="https://elenpradera.com/wp-content/uploads/2018/12/DSC05684_LR_Blog.jpg" alt="imagePromo1" className="landscape1"/>
+                             <img src="https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/revision-2019/all-revision-destination/bromo22.jpg" alt="imagePromo2" className="coastline"/>
                              </div>
                              <div className="hot-offer-wrapper col-6">
-                             <img src={promos[0].imageUrl} alt="imagePromo3" className="landscape2" data-aos="zoom-in"/>
+                             <img src={promos[0].imageUrl} alt="imagePromo3" className="landscape2"/>
                                  <span className="hot-offer-tag">HOT OFFER</span>
                              </div>
                          </div>

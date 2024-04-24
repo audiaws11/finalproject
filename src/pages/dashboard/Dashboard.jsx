@@ -3,8 +3,10 @@ import FooterDashboard from "../../components/navbarDashboard/FooterDashboard";
 import {  getActivities, getCategories, getPromos} from "../../api/api";
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from "axios";
+import AOS from "aos";
 import LayoutDashboard from "../../components/layout/LayoutDashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'aos/dist/aos.css';
 import './dasboard.css';
 
 
@@ -22,12 +24,7 @@ const Dashboard = () => {
     const [profilePictureUrl, setProfilePictureUrl] = useState('');
     const [profilePictureFile, setProfilePictureFile] = useState(null);
 
-    useEffect(() => {
-        fetchLogin();
-        fetchActivity();
-        fetchCategories();
-        fetchPromo();
-    }, []);
+   
 
     useEffect(() => {
         setName(user.name);
@@ -37,34 +34,27 @@ const Dashboard = () => {
         setProfilePictureUrl(user.profilePictureUrl);
     }, [user]);
 
-    const fetchCategories = () => {
-      getCategories()
-          .then((response) => {
-              setCategories(response.data.data);
-          })
-          .catch((error) => {
-              console.log(error);
-          });
-  };
-    const fetchPromo = () => {
-      getPromos()
-          .then((response) => {
-              setPromos(response.data.data);
-          })
-          .catch((error) => {
-              console.log(error);
-          });
-  };
-    const fetchActivity = () => {
-      getActivities()
-          .then((response) => {
-              setActivities(response.data.data);
-              
-          })
-          .catch((error) => {
-              console.log(error);
-          });
-  };
+    useEffect(() => {
+        fetchAllData();
+        fetchLogin();
+        AOS.init();
+    }, []);
+
+    const fetchAllData = async () => {
+        try {
+            const [activitiesData, categoriesData, promosData] = await Promise.all([
+                getActivities(),
+                getCategories(),
+                getPromos()
+            ]);
+            setActivities(activitiesData.data.data);
+            setCategories(categoriesData.data.data);
+            setPromos(promosData.data.data);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    };
+
     const fetchLogin = () => {
         const token = localStorage.getItem("token");
         const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
@@ -169,14 +159,14 @@ const Dashboard = () => {
                     </div>
                 </header>
                 {/* content dashboard */}
-                <div className="content-dashboard">
+                <div className="content-dashboard" >
                     <div className="row">
                         <div className="card card-dashboard row">
                             <div className="card-body ">
-                                <h1>Hi, {user.name}!</h1>
-                                <p className="role"><i className="bi bi-person-check"></i> {user.role}</p>
-                                <p className="email"><i className="bi bi-envelope-fill"></i> {user.email}</p>
-                                <p className="phone"><i className="bi bi-telephone-fill"></i> {user.phoneNumber}</p>
+                                <h1 data-aos="zoom-in" data-aos-duration="1000">Hi, {user.name}!</h1>
+                                <p className="role" data-aos="zoom-in" data-aos-duration="1000"><i className="bi bi-person-check"></i> {user.role}</p>
+                                <p className="email" data-aos="zoom-in" data-aos-duration="1000"><i className="bi bi-envelope-fill"></i> {user.email}</p>
+                                <p className="phone" data-aos="zoom-in" data-aos-duration="1000"><i className="bi bi-telephone-fill"></i> {user.phoneNumber}</p>
                             </div>
                             <div className="card-body ">
                                 <button className="button-edit" onClick={() => setShowModal(true)}>Edit Profile</button>
@@ -191,15 +181,15 @@ const Dashboard = () => {
                     <h2 className="content-title">All Job Posted</h2>
                     <div className="container text-center">
                       <div className="row align-items-center">
-                        <div className="col col-view">
+                        <div className="col col-view"data-aos="fade-up" data-aos-duration="1000">
                           <p className="title">total promo:</p>
                           <p className="posting"> {promos.length} posting</p>
                         </div>
-                        <div className="col col-view">
+                        <div className="col col-view" data-aos="fade-up" data-aos-duration="1300">
                           <p className="title">total category:</p>
                           <p className="posting"> {categories.length} posting</p>
                         </div>
-                        <div className="col col-view">
+                        <div className="col col-view" data-aos="fade-up" data-aos-duration="1600">
                           <p className="title">total activity:</p>
                           <p className="posting"> {activities.length} posting</p>
                         </div>
@@ -214,7 +204,7 @@ const Dashboard = () => {
                 <div className="content-1">
                     <div className="card-content-1">
                     <div className="latest-activity-section">
-                      <h2 className="content-title">Latest Activity</h2>
+                      <h2 className="content-title" >Latest Activity</h2>
                       <ul>
                         {latestActivities.map((activity, index) => (
                           <li key={index}>

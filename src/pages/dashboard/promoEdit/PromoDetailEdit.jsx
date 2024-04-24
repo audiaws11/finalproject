@@ -48,8 +48,6 @@ const PromoDetailEdit = () => {
         fetchLogin();
     }, []);
     
-
-    // Helper function to safely access and format date strings
     const formatDate = (dateStr) => {
         return dateStr ? new Date(dateStr).toLocaleDateString() + ' (' + new Date(dateStr).toLocaleTimeString() + ')' : '';
     };
