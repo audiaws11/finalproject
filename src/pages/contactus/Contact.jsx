@@ -2,6 +2,10 @@ import Layout from '../../components/layout/Layout';
 import './contactus.css';
 
 const Contact = () => {
+
+    const handleSave = () => {
+        alert('Request sent successfully!');
+    }
     
 
     return (
@@ -40,7 +44,7 @@ const Contact = () => {
                                     </select>
                                 </div>
                                 <div className="col-12 button-contact">
-                                    <button type="submit" className="btn-send" style={{ background: '#f37523', color: 'aliceblue', padding: '6px 25px', fontSize: '13px', fontWeight: 'bold'}}>Send</button>
+                                    <button type="submit" className="btn-send" onClick={handleSave} style={{ background: '#f37523', color: 'aliceblue', padding: '6px 25px', fontSize: '13px', fontWeight: 'bold'}}>Send</button>
                                 </div>
                             </form>
                         </div>

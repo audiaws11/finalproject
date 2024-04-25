@@ -73,4 +73,19 @@
     .contact-text {
         margin-bottom: 20px;
     }
+
+
+
+}
+
+@media (max-width: 320px) {
+    .contact-text, .contact-image {
+        text-align: center;
+    }
+
+    .contact-text {
+        margin-bottom: 20px;
+    }
+
+
 }
