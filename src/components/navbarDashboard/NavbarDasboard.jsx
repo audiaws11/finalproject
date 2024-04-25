@@ -1,22 +1,24 @@
 import React, { useCallback, useState } from 'react';
-import { LinkContainer} from 'react-router-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import { getLogout } from '../../api/api';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './navbarDashboard.css';
 
 const NavbarDashboard = () => {
-    const [isOpen, setIsOpen] = useState(false);  // State to handle sidebar visibility
-    const toggleSidebar = () => setIsOpen(!isOpen); // Function to toggle sidebar
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleSidebar = () => setIsOpen(!isOpen);
+    const navigate = useNavigate();
 
     const handleLogout = useCallback(async () => {
         const result = await getLogout();
         if (result) {
-            console.log('Redirecting to login page...')
+            console.log('Redirecting to login page...');
             setTimeout(() => {
-                window.location.href = '/';
+                navigate('/');  // Use navigate to redirect
             }, 1000);
         }
-    }, []);
+    }, [navigate]);
 
     return (
         <div>
@@ -26,30 +28,29 @@ const NavbarDashboard = () => {
                 <div className="logo">
                     <img src="/image2vector.svg" alt="logo" style={{ width: '35px', height: '35px' }}/>Kaja <span style={{ color: '#f37523' }}>Travel</span>
                 </div>
-                <LinkContainer to="/">
-                <div className="sidebar-item" onClick={() => window.location.href = '/dashboard'}>
-                    <i className="bi bi-house-fill"></i>
-                    <span>Home</span>
-                </div> 
+                <LinkContainer to="/dashboard">
+                    <div className="sidebar-item">
+                        <i className="bi bi-house-fill"></i>
+                        <span>Home</span>
+                    </div>
                 </LinkContainer>
-                
-                <div className="sidebar-item" onClick={() => window.location.href = '/all-user'}>
+                <div className="sidebar-item" onClick={() => navigate('/all-user')}>
                     <i className="bi bi-people-fill"></i>
                     <span>All Users</span>
                 </div>
-                <div className="sidebar-item" onClick={() => window.location.href = '/dashboard/banner'}>
+                <div className="sidebar-item" onClick={() => navigate('/dashboard/banner')}>
                     <i className="bi bi-columns-gap"></i>
                     <span>Banner</span>
                 </div>
-                <div className="sidebar-item" onClick={() => window.location.href = '/dashboard/offer'}>
+                <div className="sidebar-item" onClick={() => navigate('/dashboard/offer')}>
                     <i className="bi bi-percent"></i>
                     <span>Offer</span>
                 </div>
-                <div className="sidebar-item" onClick={() => window.location.href = '/dashboard/category'}>
+                <div className="sidebar-item" onClick={() => navigate('/dashboard/category')}>
                     <i className="bi bi-bookmarks-fill"></i>
                     <span>Category</span>
                 </div>
-                <div className="sidebar-item" onClick={() => window.location.href = '/dashboard/activity'}>
+                <div className="sidebar-item" onClick={() => navigate('/dashboard/activity')}>
                     <i className="bi bi-suitcase-fill"></i>
                     <span>Activity</span>
                 </div>
