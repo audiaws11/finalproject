@@ -26,8 +26,8 @@ const NavbarDashboard = () => {
                 <div className="logo">
                     <img src="/image2vector.svg" alt="logo" style={{ width: '35px', height: '35px' }}/>Kaja <span style={{ color: '#f37523' }}>Travel</span>
                 </div>
-                <LinkContainer to="/dashboard">
-                <div className="sidebar-item">
+                <LinkContainer to="/">
+                <div className="sidebar-item" onClick={() => window.location.href = '/dashboard'}>
                     <i className="bi bi-house-fill"></i>
                     <span>Home</span>
                 </div> 

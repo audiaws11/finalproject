@@ -134,7 +134,7 @@ const Dashboard = () => {
         .then(response => {
             setUser(response.data.data);
             setShowModal(false);
-            window.location.reload();
+            setUser(prevUser => ({ ...prevUser, ...data }));
             console.log(response.data.data);
         })
         .catch(error => {
