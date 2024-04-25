@@ -23,7 +23,7 @@ const NavbarDashboard = () => {
             <div className={`overlay ${isOpen ? 'active' : ''}`} onClick={toggleSidebar}></div>
             <div className={`sidebar ${isOpen ? 'open' : ''}`}>
                 <div className="logo">
-                    <img src="/image2vector.svg" alt="logo" style={{ width: '35px', height: '35px' }}/>Kaja
+                    <img src="/image2vector.svg" alt="logo" style={{ width: '35px', height: '35px' }}/>Kaja <span style={{ color: '#f37523' }}>Travel</span>
                 </div>
                 <div className="sidebar-item" onClick={() => window.location.href = '/dashboard'}>
                     <i className="bi bi-house-fill"></i>

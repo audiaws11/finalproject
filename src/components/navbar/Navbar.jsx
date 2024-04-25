@@ -18,7 +18,7 @@ function AppNavbar() {
                 <LinkContainer to="/">
                     <Navbar.Brand>
                         <img src="/image2vector.svg" alt="logo" className="logo" style={{ width: '60px', height: '60px' }} />
-                         Kaja
+                         Kaja <span style={{ color: '#f37523' }}>Travel</span>
                     </Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"  />

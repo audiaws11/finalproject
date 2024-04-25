@@ -60,8 +60,8 @@ const Login = () => {
         <div className="login-container col-md-6">
             <div className="login-box">
             <h1 className="title">
-                        <i className="bi bi-globe-asia-australia" style={{ color: '#f37523', fontSize: '22px' }}></i>
-                        <span style={{ color: 'black', fontSize: '25px' }}> Kaja</span>
+                        <img src="/image2vector.svg" style={{ color: '#f37523', fontSize: '10px', width: '40px', height: '40px' }}/>
+                        <span style={{ color: 'black', fontSize: '25px' }}> Kaja</span><span style={{ color: '#f37523', fontSize: '25px' }}>Travel</span>
                         <span> account</span></h1>
             <h2>Account Log in / Sign up</h2>
               <label className="form-label">Email:</label>
