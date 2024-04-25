@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getActivityById } from "../../api/api";
+import { getActivityById } from "../../../api/api";
 import { Modal, Button } from "react-bootstrap";
-import NavbarDashboard from "../../components/navbarDashboard/NavbarDasboard";
-import FooterDashboard from "../../components/navbarDashboard/FooterDashboard";
+import NavbarDashboard from "../../../components/navbarDashboard/NavbarDasboard";
+import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';

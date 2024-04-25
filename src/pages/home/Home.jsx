@@ -46,7 +46,7 @@ const Home = () => {
            {/* Header */}
                 <div className="container-fluid main" >
                     <div className="container-fluid article1">
-                        <Carousel interval={4000} wrap={true} data-aos="zoom-in" data-aos-duration="500">
+                        <Carousel interval={4000} wrap={true} data-aos="zoom-in" >
                         <Carousel.Item>
                             <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>

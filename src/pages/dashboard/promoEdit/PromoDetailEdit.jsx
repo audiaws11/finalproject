@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getCategoryById } from "../../api/api";
-import NavbarDashboard from "../../components/navbarDashboard/NavbarDasboard";
-import FooterDashboard from "../../components/navbarDashboard/FooterDashboard";
+import { getOfferById } from "../../../api/api";
+import NavbarDashboard from "../../../components/navbarDashboard/NavbarDasboard";
+import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './categoryedit.css';
+import '../promoEdit/promoedit.css';
 
-const CategoryDetailEdit = () => {
-
-    const [error, setError] = useState(null);
+const PromoDetailEdit = () => {
     const [user, setUser] = useState({});
-    const [categoryDetail, setCategoryDetail] = useState({});
+    const [promoDetail, setPromoDetail] = useState({});
+    const [error, setError] = useState(null);
     const { id } = useParams();
-    console.log(`Fetching details for category ID: ${id}`); // For debugging
+    console.log(`Fetching details for banner ID: ${id}`); // For debugging
 
     const fetchLogin = () => {
         const token = localStorage.getItem("token");
@@ -30,28 +29,24 @@ const CategoryDetailEdit = () => {
             .then(res => setUser(res.data.data))
             .catch(err => setError('Failed to fetch user data. Please try again later.'));
     };
-    const fetchCategoryId = () => {
-        getCategoryById(id)
+    const fetchPromoId = () => {
+        getOfferById(id)
             .then((response) => {
-                setCategoryDetail(response.data.data);
+                setPromoDetail(response.data.data);
                 console.log(response.data.data);
             })
             .catch((err) => {
-                console.error('Failed to fetch category details:', err);
+                console.error('Failed to fetch banner details:', err);
             });
     };
 
     useEffect(() => {
-        fetchCategoryId();
+        fetchPromoId();
     }, [id]);
 
     useEffect(() => {
         fetchLogin();
     }, []);
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
     
     const formatDate = (dateStr) => {
         return dateStr ? new Date(dateStr).toLocaleDateString() + ' (' + new Date(dateStr).toLocaleTimeString() + ')' : '';
@@ -73,15 +68,15 @@ const CategoryDetailEdit = () => {
                <div className='banner-detail'>
                <div className="container-fluid offer-detail detail" >
                     <div className="container-fluid offer1-detail" data-aos="" data-aos-duration="500">
-                        <div className="container offer-layout-detail" style={{ backgroundImage: `url(${categoryDetail.imageUrl})`, height: '500px' }}>
+                        <div className="container offer-layout-detail" style={{ backgroundImage: `url(${promoDetail.imageUrl})`, height: '500px' }}>
                             <div className="row" style={{ height: '100%' }}>
                                 <div className="col-6 text-left offer-detail-header-section">
-                                    <h1>{categoryDetail.name}</h1>
+                                    <h1>{promoDetail.title}</h1>
                                     <div className="breadcrumb-offer-detail">
                                         <Breadcrumb>
                                             <Breadcrumb.Item href="/dashboard">Dashboard</Breadcrumb.Item>
-                                            <Breadcrumb.Item href="/dashboard/category">Category</Breadcrumb.Item>
-                                            <Breadcrumb.Item active>{categoryDetail.name}</Breadcrumb.Item>
+                                            <Breadcrumb.Item href="/dashboard/offer">Offer</Breadcrumb.Item>
+                                            <Breadcrumb.Item active>{promoDetail.title}</Breadcrumb.Item>
                                         </Breadcrumb>
                                     </div>
                                 </div>
@@ -93,14 +88,18 @@ const CategoryDetailEdit = () => {
                  <div className="tour-offer-container">
                     <div className="tour-offer-rating row container">
                         <div className="col">
-                            <h2>{categoryDetail.name}</h2>
-                            <p>ID: {categoryDetail.id}</p>
+                            <h2>{promoDetail.title}</h2>
+                            <p>ID: {promoDetail.id}</p>
                         </div>
                     </div>
                     <div className="tour-offer-description">
+                        <h3>Description</h3>
+                        <p>{promoDetail.description}</p>
+                        <h3>Terms and Condition</h3>
+                        <p>{promoDetail.terms_condition}</p>
                         <h3>Detail</h3>
-                        <p>Created: {formatDate(categoryDetail.createdAt)}</p>
-                         {/* header offer */}<p>Updated: {formatDate(categoryDetail.updatedAt)}</p>
+                        <p>Created: {formatDate(promoDetail.createdAt)}</p>
+                        <p>Updated: {formatDate(promoDetail.updatedAt)}</p>
                     </div>
                 </div>
                </div>
@@ -110,4 +109,4 @@ const CategoryDetailEdit = () => {
     );
 };
 
-export default CategoryDetailEdit;
+export default PromoDetailEdit;

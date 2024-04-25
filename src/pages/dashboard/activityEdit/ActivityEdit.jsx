@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { getActivities, getCategories } from "../../api/api";
+import { getActivities, getCategories } from "../../../api/api";
 import { useNavigate } from 'react-router-dom';
-import FooterDashboard from "../../components/navbarDashboard/FooterDashboard";
+import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from "axios";
-import LayoutDashboard from "../../components/layout/LayoutDashboard";
+import LayoutDashboard from "../../../components/layout/LayoutDashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './activityedit.css';
