@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
+import FooterDashboard from "../../components/navbarDashboard/FooterDashboard";
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { setShowModal, hideModal } from '../../../pages/dashboard/alluser/modalSlice';
+import { setShowModal, hideModal } from '../../pages/alluser/modalSlice';
 import axios from "axios";
-import LayoutDashboard from "../../../components/layout/LayoutDashboard";
+import LayoutDashboard from "../../components/layout/LayoutDashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './alluser.css';

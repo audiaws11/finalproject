@@ -7,15 +7,15 @@ import DetailOffer from "../pages/promo/DetailOffer";
 import Activity from "../pages/activity/Activity";
 import DetailActivity from "../pages/activity/DetailActivity";
 import ActivityByCategorires from "../pages/activity/ActivityByCategorires";
-import AllUser from "../pages/dashboard/alluser/AllUser";
-import BannerEdit from "../pages/dashboard/bannerEdit/BannerEdit";
-import BannerDetail from "../pages/dashboard/bannerEdit/BannerDetail";
-import PromoEdit from "../pages/dashboard/promoEdit/PromoEdit";
-import PromoDetailEdit from "../pages/dashboard/promoEdit/PromoDetailEdit";
-import CategoryEdit from "../pages/dashboard/category/CategoryEdit";
-import CategoryDetailEdit from "../pages/dashboard/category/CategoryDetailEdit";
-import ActivityEdit from "../pages/dashboard/activity/ActivityEdit";
-import ActivityDetailEdit from "../pages/dashboard/activity/ActivityDetailEdit";
+import AllUser from "../pages/alluser/AllUser";
+import BannerEdit from "../pages/bannerEdit/BannerEdit";
+import BannerDetail from "../pages/bannerEdit/BannerDetail";
+import PromoEdit from "../pages/promoEdit/PromoEdit";
+import PromoDetailEdit from "../pages/promoEdit/PromoDetailEdit";
+import CategoryEdit from "../pages/categoryEdit/CategoryEdit";
+import CategoryDetailEdit from "../pages/categoryEdit/CategoryDetailEdit";
+import ActivityEdit from "../pages/activityEdit/ActivityEdit";
+import ActivityDetailEdit from "../pages/activityEdit/ActivityDetailEdit";
 import Contact from "../pages/contactus/Contact";
 
 
