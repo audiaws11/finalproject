@@ -62,7 +62,7 @@ export const routeList = [
         element: <Dashboard />
     },
     {
-        path: "/dashboard/all-user",
+        path: "/all-user",
         element: <AllUser/>
     },
     {

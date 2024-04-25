@@ -29,7 +29,7 @@ const NavbarDashboard = () => {
                     <i className="bi bi-house-fill"></i>
                     <span>Home</span>
                 </div>
-                <div className="sidebar-item" onClick={() => window.location.href = '/dashboard/all-user'}>
+                <div className="sidebar-item" onClick={() => window.location.href = '/all-user'}>
                     <i className="bi bi-people-fill"></i>
                     <span>All Users</span>
                 </div>
