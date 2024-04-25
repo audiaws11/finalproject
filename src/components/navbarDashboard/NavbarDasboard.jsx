@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { LinkContainer} from 'react-router-bootstrap';
 import { getLogout } from '../../api/api';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './navbarDashboard.css';
@@ -25,10 +26,13 @@ const NavbarDashboard = () => {
                 <div className="logo">
                     <img src="/image2vector.svg" alt="logo" style={{ width: '35px', height: '35px' }}/>Kaja <span style={{ color: '#f37523' }}>Travel</span>
                 </div>
-                <div className="sidebar-item" onClick={() => window.location.href = '/dashboard'}>
+                <LinkContainer to="/dashboard">
+                <div className="sidebar-item">
                     <i className="bi bi-house-fill"></i>
                     <span>Home</span>
-                </div>
+                </div> 
+                </LinkContainer>
+                
                 <div className="sidebar-item" onClick={() => window.location.href = '/all-user'}>
                     <i className="bi bi-people-fill"></i>
                     <span>All Users</span>
