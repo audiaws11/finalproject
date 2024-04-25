@@ -58,6 +58,7 @@ const AllUser = () => {
                 setUser(res.data.data);
             })
             .catch(err => {
+                console.error(err);
                 setError('Failed to fetch data. Please try again later.');
             });
     };
@@ -76,6 +77,7 @@ const AllUser = () => {
                 setUsers(res.data.data);
             })
             .catch(err => {
+                console.error(err);
                 setError('Failed to fetch data. Please try again later.');
             });
     };
@@ -94,11 +96,19 @@ const AllUser = () => {
             const data = { role };
 
             axios.post(API_URL, data, { headers })
-            .then(response => {
+            .then(res => {
+                const updatedUsers = users.map(user => {
+                    if (user.id === selectedUserId) {
+                        return { ...user, role: role }; 
+                    }
+                    return user;
+
+                });
                 
-                console.log('Role updated successfully');
-                setShowModal(false);
-                window.location.reload(); 
+                console.log(res);
+                dispatch(setShowModal(false));
+                setUsers(updatedUsers)
+                
             })
             .catch(error => {
                 console.error('Failed to update role:', error);

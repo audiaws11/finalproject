@@ -30,7 +30,7 @@ const ActivityDetailEdit = () => {
 
         axios.get(API_URL, { headers })
             .then(res => setUser(res.data.data))
-            .catch(err => setError('Failed to fetch user data. Please try again later.'));
+            .catch(err => alert('Failed to fetch user data. Please try again later.'));
     };
     const fetchActivityId = () => {
         getActivityById(id)

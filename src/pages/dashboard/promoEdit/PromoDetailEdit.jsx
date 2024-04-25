@@ -12,7 +12,6 @@ import '../promoEdit/promoedit.css';
 const PromoDetailEdit = () => {
     const [user, setUser] = useState({});
     const [promoDetail, setPromoDetail] = useState({});
-    const [error, setError] = useState(null);
     const { id } = useParams();
     console.log(`Fetching details for banner ID: ${id}`); // For debugging
 
@@ -27,7 +26,7 @@ const PromoDetailEdit = () => {
 
         axios.get(API_URL, { headers })
             .then(res => setUser(res.data.data))
-            .catch(err => setError('Failed to fetch user data. Please try again later.'));
+            .catch(err => alert('Failed to fetch user data. Please try again later.'));
     };
     const fetchPromoId = () => {
         getOfferById(id)
@@ -36,7 +35,7 @@ const PromoDetailEdit = () => {
                 console.log(response.data.data);
             })
             .catch((err) => {
-                console.error('Failed to fetch banner details:', err);
+                console.alert('Failed to fetch banner details:', err);
             });
     };
 

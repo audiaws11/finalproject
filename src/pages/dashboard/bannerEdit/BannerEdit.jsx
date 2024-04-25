@@ -42,7 +42,8 @@ const BannerEdit = () => {
     const fetchBanner = () => {
         getBanners()
             .then(response => setBanners(response.data.data))
-            .catch(error => setError('Failed to fetch banners. Please try again later.'));
+            .catch(error => setError('Failed to fetch banners. Please try again later.'))
+            ;
     };
 
     const handleEditBanner = (banner) => {
