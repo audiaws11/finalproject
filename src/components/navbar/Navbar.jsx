@@ -33,6 +33,9 @@ function AppNavbar() {
                         <LinkContainer to="/offer">
                             <Nav.Link className={isActive('/offer')}>Our Offer</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer to="/contactus">
+                            <Nav.Link className={isActive('/contactus')}>Contact Us</Nav.Link>
+                        </LinkContainer>
                     </Nav>
                     <Nav>
                         <LinkContainer to="/login">

@@ -63,7 +63,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </Carousel.Item>
-                        {banners.map((banner, index) => (
+                        {banners.slice(0, 3).map((banner, index) => (
                             <Carousel.Item key={index}> {/* Ensure you have a unique key for each item */}
                                 <div className="container travel-layout" style={{ backgroundImage: `url(${banner.imageUrl})`, height: '500px' }}>
                                     <div className="row" style={{ height: '100%' }}>{banner.title}

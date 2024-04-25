@@ -16,6 +16,8 @@ import CategoryEdit from "../pages/dashboard/category/CategoryEdit";
 import CategoryDetailEdit from "../pages/dashboard/category/CategoryDetailEdit";
 import ActivityEdit from "../pages/dashboard/activity/ActivityEdit";
 import ActivityDetailEdit from "../pages/dashboard/activity/ActivityDetailEdit";
+import Contact from "../pages/contactus/Contact";
+
 
 export const routeList = [
    
@@ -50,6 +52,10 @@ export const routeList = [
     {
         path: "/activity/:id",
         element: <DetailActivity />
+    },
+    {
+        path: "/contactus",
+        element: <Contact />
     },
     {
         path: "/dashboard",
