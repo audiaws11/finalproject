@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import FooterDashboard from "../../components/navbarDashboard/FooterDashboard";
-import {  getActivities, getCategories, getPromos} from "../../api/api";
+import {  getActivities, getCategories, getPromos, fetchLogin} from "../../api/api";
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from "axios";
 import AOS from "aos";
@@ -36,7 +36,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         fetchAllData();
-        fetchLogin();
+        fetchLoginData();
         AOS.init();
     }, []);
 
@@ -55,24 +55,14 @@ const Dashboard = () => {
         }
     };
 
-    const fetchLogin = () => {
-        const token = localStorage.getItem("token");
-        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
-        const headers = {
-            'Authorization': `Bearer ${token}`,
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-            'Content-Type': 'application/json'
-        };
-
-        axios.get(API_URL, { headers })
-            .then(res => {
-                setUser(res.data.data);
-            })
-            .catch(err => {
-                setError('Failed to fetch data. Please try again later.');
-            });
+    const fetchLoginData = async () => {
+        try {
+            const userData = await fetchLogin();
+            setUser(userData);
+        } catch (error) {
+            setError('Failed to fetch login data. Please try again later.');
+        }
     };
-
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         switch (name) {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPromos } from "../../../api/api";
+import { getPromos, fetchLogin, deletePromo } from "../../../api/api";
 import { useNavigate } from 'react-router-dom';
 import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import { Modal, Button, Form } from 'react-bootstrap';
@@ -28,22 +28,17 @@ const PromoEdit= () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchLogin();
+        fetchLoginData();
         fetchPromo();
     }, []);
 
-    const fetchLogin = () => {
-        const token = localStorage.getItem("token");
-        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
-        const headers = {
-            'Authorization': `Bearer ${token}`,
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-            'Content-Type': 'application/json'
-        };
-
-        axios.get(API_URL, { headers })
-            .then(res => setUser(res.data.data))
-            .catch(err => setError('Failed to fetch user data. Please try again later.'));
+    const fetchLoginData = async () => {
+        try {
+            const userData = await fetchLogin();
+            setUser(userData);
+        } catch (error) {
+            setError('Failed to fetch login data. Please try again later.');
+        }
     };
 
     const fetchPromo = () => {
@@ -82,14 +77,7 @@ const PromoEdit= () => {
     };
 
     const handleDeletePromo = () => {
-        const API_URL = `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/delete-promo/${selectedPromo.id}`;
-        const headers = {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-            'Content-Type': 'application/json'
-        };
-
-        axios.delete(API_URL, { headers })
+        deletePromo(selectedPromo.id)
             .then(() => {
                 fetchPromo();
                 setShowModal(false);

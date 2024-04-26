@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getOfferById } from "../../../api/api";
+import { getOfferById, fetchLogin } from "../../../api/api";
 import NavbarDashboard from "../../../components/navbarDashboard/NavbarDasboard";
 import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../promoEdit/promoedit.css';
@@ -15,18 +14,13 @@ const PromoDetailEdit = () => {
     const { id } = useParams();
     console.log(`Fetching details for banner ID: ${id}`); // For debugging
 
-    const fetchLogin = () => {
-        const token = localStorage.getItem("token");
-        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
-        const headers = {
-            'Authorization': `Bearer ${token}`,
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-            'Content-Type': 'application/json'
-        };
-
-        axios.get(API_URL, { headers })
-            .then(res => setUser(res.data.data))
-            .catch(err => alert('Failed to fetch user data. Please try again later.'));
+    const fetchLoginData = async () => {
+        try {
+            const userData = await fetchLogin();
+            setUser(userData);
+        } catch (error) {
+            alert('Failed to fetch login data. Please try again later.');
+        }
     };
     const fetchPromoId = () => {
         getOfferById(id)
@@ -44,7 +38,7 @@ const PromoDetailEdit = () => {
     }, [id]);
 
     useEffect(() => {
-        fetchLogin();
+        fetchLoginData();
     }, []);
     
     const formatDate = (dateStr) => {

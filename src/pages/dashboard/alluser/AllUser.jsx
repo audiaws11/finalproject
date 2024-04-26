@@ -3,7 +3,7 @@ import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { setShowModal, hideModal } from '../../../pages/dashboard/alluser/modalSlice';
-import axios from "axios";
+import { fetchLogin, fetchAllUser, updateUserRole } from "../../../api/api";
 import LayoutDashboard from "../../../components/layout/LayoutDashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -25,8 +25,7 @@ const AllUser = () => {
     const colors = ['#f2ede4', '#e2d6ba', '#e2d6ba', '#547255', '#547255', '#547255', '#d5d2cd', '#f37523'];
    
     useEffect(() => {
-        fetchLogin();
-        fetchAllUser();
+        fetchData();
        
     }, []);
 
@@ -44,77 +43,37 @@ const AllUser = () => {
         });
     };
 
-    const fetchLogin = () => {
-        const token = localStorage.getItem("token");
-        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
-        const headers = {
-            'Authorization': `Bearer ${token}`,
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-            'Content-Type': 'application/json'
-        };
+    const fetchData = async () => {
+        try {
+            const userData = await fetchLogin();
+            setUser(userData);
 
-        axios.get(API_URL, { headers })
-            .then(res => {
-                setUser(res.data.data);
-            })
-            .catch(err => {
-                console.error(err);
-                setError('Failed to fetch data. Please try again later.');
-            });
+            const usersData = await fetchAllUser();
+            setUsers(usersData);
+        } catch (error) {
+            setError('Failed to fetch data. Please try again later.');
+        }
     };
-
-    const fetchAllUser = () => {
-        const token = localStorage.getItem("token");
-        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/all-user';
-        const headers = {
-            'Authorization': `Bearer ${token}`,
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-            'Content-Type': 'application/json'
-        };
-
-        axios.get(API_URL, { headers })
-            .then(res => {
-                setUsers(res.data.data);
-            })
-            .catch(err => {
-                console.error(err);
-                setError('Failed to fetch data. Please try again later.');
-            });
-    };
-
 
 
     const handleSaveChanges = () => {
-        const { role } = formData;
-        if (selectedUserId && role) {
-            const API_URL = `https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/update-user-role/${selectedUserId}`;
-            const headers = {
-                'Authorization': `Bearer ${localStorage.getItem("token")}`,
-                'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-                'Content-Type': 'application/json'
-            };
-            const data = { role };
-
-            axios.post(API_URL, data, { headers })
-            .then(res => {
+        updateUserRole(selectedUserId, formData)
+            .then((data) => {
                 const updatedUsers = users.map(user => {
                     if (user.id === selectedUserId) {
-                        return { ...user, role: role }; 
+                        return { ...user, role: formData.role }; 
                     }
                     return user;
-
                 });
                 
-                console.log(res);
+                console.log(data);
                 dispatch(setShowModal(false));
-                setUsers(updatedUsers)
-                
+                setUsers(updatedUsers);
             })
-            .catch(error => {
-                console.error('Failed to update role:', error);
+            .catch((error) => {
+                console.error(error);
                 setError('Failed to update role. Please try again later.');
             });
-        }
     };
 
     const indexOfLastUser = currentPage * usersPerPage;

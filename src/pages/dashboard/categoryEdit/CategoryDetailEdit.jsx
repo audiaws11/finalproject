@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getCategoryById } from "../../../api/api";
+import { getCategoryById, fetchLogin } from "../../../api/api";
 import NavbarDashboard from "../../../components/navbarDashboard/NavbarDasboard";
 import FooterDashboard from "../../../components/navbarDashboard/FooterDashboard";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './categoryedit.css';
@@ -17,18 +16,13 @@ const CategoryDetailEdit = () => {
     const { id } = useParams();
     console.log(`Fetching details for category ID: ${id}`); // For debugging
 
-    const fetchLogin = () => {
-        const token = localStorage.getItem("token");
-        const API_URL = 'https://travel-journal-api-bootcamp.do.dibimbing.id/api/v1/user';
-        const headers = {
-            'Authorization': `Bearer ${token}`,
-            'apiKey': '24405e01-fbc1-45a5-9f5a-be13afcd757c',
-            'Content-Type': 'application/json'
-        };
-
-        axios.get(API_URL, { headers })
-            .then(res => setUser(res.data.data))
-            .catch(err => setError('Failed to fetch user data. Please try again later.'));
+    const fetchLoginData = async () => {
+        try {
+            const userData = await fetchLogin();
+            setUser(userData);
+        } catch (error) {
+            setError('Failed to fetch login data. Please try again later.');
+        }
     };
     const fetchCategoryId = () => {
         getCategoryById(id)
@@ -46,7 +40,7 @@ const CategoryDetailEdit = () => {
     }, [id]);
 
     useEffect(() => {
-        fetchLogin();
+        fetchLoginData();
     }, []);
 
     if (error) {
