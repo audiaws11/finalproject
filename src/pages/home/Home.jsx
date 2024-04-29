@@ -47,17 +47,18 @@ const Home = () => {
                 <div className="container-fluid main" >
                     <div className="container-fluid article1">
                         <Carousel interval={4000} wrap={true} data-aos="zoom-in" >
+                        
                         <Carousel.Item>
-                            <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg)', height: '500px' }}>
+                            <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapercave.com/wp/wp9247775.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>
-                                    <div className="col-6 text-left header-section" > 
-                                        <h1 data-aos="fade-right" data-aos-duration="700">
+                                    <div className="col-6 text-left header-section">
+                                        <h1>
                                             Explore<br />
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
-                                        </h1 >
-                                        <p data-aos="fade-right" data-aos-duration="900">Discover possibilities of travelling!</p>
+                                        </h1>
+                                        <p>Discover possibilities of travelling!</p>
                                         <LinkContainer to="/activity">
-                                        <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
+                                            <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
                                         </LinkContainer>
                                     </div>
                                 </div>
@@ -81,22 +82,22 @@ const Home = () => {
                                 </div>
                             </Carousel.Item>
                         ))}
-                         <Carousel.Item>
-                            <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapercave.com/wp/wp9247775.jpg)', height: '500px' }}>
+                        {/* <Carousel.Item>
+                            <div className="container travel-layout" style={{ backgroundImage: 'url(https://wallpapers.com/images/featured/4k-oaax18kaapkokaro.jpg)', height: '500px' }}>
                                 <div className="row" style={{ height: '100%' }}>
-                                    <div className="col-6 text-left header-section">
-                                        <h1>
+                                    <div className="col-6 text-left header-section" > 
+                                        <h1 data-aos="fade-right" data-aos-duration="700">
                                             Explore<br />
                                             <span style={{ color: '#f37523' }}>the world</span><br /> with us
-                                        </h1>
-                                        <p>Discover possibilities of travelling!</p>
+                                        </h1 >
+                                        <p data-aos="fade-right" data-aos-duration="900">Discover possibilities of travelling!</p>
                                         <LinkContainer to="/activity">
-                                            <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
+                                        <button className="btn btn-orange" data-aos="fade-right" data-aos-duration="1100" >Explore</button>
                                         </LinkContainer>
                                     </div>
                                 </div>
                             </div>
-                        </Carousel.Item>
+                        </Carousel.Item> */}
                         </Carousel>
                     </div>
                 

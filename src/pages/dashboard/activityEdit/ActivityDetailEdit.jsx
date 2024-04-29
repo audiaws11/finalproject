@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { getActivityById, fetchLogin } from "../../../api/api";
 import { Modal, Button } from "react-bootstrap";
@@ -80,8 +81,8 @@ const ActivityDetailEdit = () => {
                                     <h1>{activityDetailEdit.title}</h1>
                                     <div className="breadcrumb-offer-detail">
                                         <Breadcrumb>
-                                            <Breadcrumb.Item href="/dashboard">Dashboard</Breadcrumb.Item>
-                                            <Breadcrumb.Item href="/dashboard/activity">Activity</Breadcrumb.Item>
+                                        <Breadcrumb.Item as={Link} to="/dashboard">Dashboard</Breadcrumb.Item>
+                                        <Breadcrumb.Item as={Link} to="/dashboard/activity">Activity</Breadcrumb.Item>
                                             <Breadcrumb.Item active>{activityDetailEdit.title}</Breadcrumb.Item>
                                         </Breadcrumb>
                                     </div>
