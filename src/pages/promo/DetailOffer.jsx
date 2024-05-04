@@ -43,9 +43,9 @@ const DetailOffer = () => {
                                         <div className="breadcrumb-offer-detail">
                                         <Breadcrumb>
                                             <Breadcrumb.Item href="/" >Home</Breadcrumb.Item>
-                                            <Breadcrumb.Item href="/offer">
+                                            {/* <Breadcrumb.Item href="/offer">
                                                 Our Offer
-                                            </Breadcrumb.Item>
+                                            </Breadcrumb.Item> */}
                                             <Breadcrumb.Item active >{detailOffer.title}</Breadcrumb.Item>
                                         </Breadcrumb>
                                         </div>

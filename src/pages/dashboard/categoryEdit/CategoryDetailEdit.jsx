@@ -74,7 +74,7 @@ const CategoryDetailEdit = () => {
                                     <div className="breadcrumb-offer-detail">
                                         <Breadcrumb>
                                             <Breadcrumb.Item href="/dashboard">Dashboard</Breadcrumb.Item>
-                                            <Breadcrumb.Item href="/dashboard/category">Category</Breadcrumb.Item>
+                                            {/* <Breadcrumb.Item href="/dashboard/category">Category</Breadcrumb.Item> */}
                                             <Breadcrumb.Item active>{categoryDetail.name}</Breadcrumb.Item>
                                         </Breadcrumb>
                                     </div>

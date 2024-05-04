@@ -58,9 +58,9 @@ const DetailActivity = () => {
                 <div className="breadcrumb-detail">
                 <Breadcrumb>
                     <Breadcrumb.Item href="/" >Home</Breadcrumb.Item>
-                    <Breadcrumb.Item href="/activity">
+                    {/* <Breadcrumb.Item href="/activity">
                         Activity
-                    </Breadcrumb.Item>
+                    </Breadcrumb.Item> */}
                     <Breadcrumb.Item active >{detailActivity.title}</Breadcrumb.Item>
                 </Breadcrumb>
                 </div>

@@ -81,8 +81,8 @@ const ActivityDetailEdit = () => {
                                     <h1>{activityDetailEdit.title}</h1>
                                     <div className="breadcrumb-offer-detail">
                                         <Breadcrumb>
-                                        <Breadcrumb.Item as={Link} to="/dashboard">Dashboard</Breadcrumb.Item>
-                                        <Breadcrumb.Item as={Link} to="/dashboard/activity">Activity</Breadcrumb.Item>
+                                        <Breadcrumb.Item href="/dashboard" >Dashboard</Breadcrumb.Item>
+                                        {/* <Breadcrumb.Item as={Link} to="/dashboard/activity">Activity</Breadcrumb.Item> */}
                                             <Breadcrumb.Item active>{activityDetailEdit.title}</Breadcrumb.Item>
                                         </Breadcrumb>
                                     </div>

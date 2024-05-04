@@ -68,7 +68,7 @@ const BannerDetail = () => {
                                     <div className="breadcrumb-offer-detail">
                                         <Breadcrumb>
                                             <Breadcrumb.Item href="/dashboard">Dashboard</Breadcrumb.Item>
-                                            <Breadcrumb.Item href="/dashboard/banner">Banner</Breadcrumb.Item>
+                                            {/* <Breadcrumb.Item href="/dashboard/banner">Banner</Breadcrumb.Item> */}
                                             <Breadcrumb.Item active>{bannerDetail.name}</Breadcrumb.Item>
                                         </Breadcrumb>
                                     </div>
