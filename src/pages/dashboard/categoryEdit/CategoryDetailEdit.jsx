@@ -72,11 +72,11 @@ const CategoryDetailEdit = () => {
                                 <div className="col-6 text-left offer-detail-header-section">
                                     <h1>{categoryDetail.name}</h1>
                                     <div className="breadcrumb-offer-detail">
-                                        <Breadcrumb>
+                                        {/* <Breadcrumb>
                                             <Breadcrumb.Item href="/dashboard">Dashboard</Breadcrumb.Item>
-                                            {/* <Breadcrumb.Item href="/dashboard/category">Category</Breadcrumb.Item> */}
+                                            <Breadcrumb.Item href="/dashboard/category">Category</Breadcrumb.Item>
                                             <Breadcrumb.Item active>{categoryDetail.name}</Breadcrumb.Item>
-                                        </Breadcrumb>
+                                        </Breadcrumb> */}
                                     </div>
                                 </div>
                             </div>

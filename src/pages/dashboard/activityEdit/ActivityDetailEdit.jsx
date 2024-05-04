@@ -80,11 +80,11 @@ const ActivityDetailEdit = () => {
                                 <div className="col-6 text-left offer-detail-header-section">
                                     <h1>{activityDetailEdit.title}</h1>
                                     <div className="breadcrumb-offer-detail">
-                                        <Breadcrumb>
+                                        {/* <Breadcrumb>
                                         <Breadcrumb.Item href="/dashboard" >Dashboard</Breadcrumb.Item>
-                                        {/* <Breadcrumb.Item as={Link} to="/dashboard/activity">Activity</Breadcrumb.Item> */}
+                                        <Breadcrumb.Item as={Link} to="/dashboard/activity">Activity</Breadcrumb.Item>
                                             <Breadcrumb.Item active>{activityDetailEdit.title}</Breadcrumb.Item>
-                                        </Breadcrumb>
+                                        </Breadcrumb> */}
                                     </div>
                                 </div>
                             </div>

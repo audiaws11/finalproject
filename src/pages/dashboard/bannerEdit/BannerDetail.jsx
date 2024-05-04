@@ -66,11 +66,11 @@ const BannerDetail = () => {
                                 <div className="col-6 text-left offer-detail-header-section">
                                     <h1>{bannerDetail.name}</h1>
                                     <div className="breadcrumb-offer-detail">
-                                        <Breadcrumb>
+                                        {/* <Breadcrumb>
                                             <Breadcrumb.Item href="/dashboard">Dashboard</Breadcrumb.Item>
-                                            {/* <Breadcrumb.Item href="/dashboard/banner">Banner</Breadcrumb.Item> */}
+                                            <Breadcrumb.Item href="/dashboard/banner">Banner</Breadcrumb.Item>
                                             <Breadcrumb.Item active>{bannerDetail.name}</Breadcrumb.Item>
-                                        </Breadcrumb>
+                                        </Breadcrumb> */}
                                     </div>
                                 </div>
                             </div>
